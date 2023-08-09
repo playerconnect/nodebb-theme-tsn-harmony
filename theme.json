@@ -1,7 +1,7 @@
 {
-    "id": "nodebb-theme-harmony",
-    "name": "Harmony",
-    "description": "The default theme for NodeBB. Uses a standard approach to forum design.",
-    "url": "https://github.com/nodebb/nodebb-theme-harmony",
+    "id": "nodebb-theme-tsn-harmony",
+    "name": "TSN Harmony",
+    "description": "The Show Harmony theme for NodeBB.",
+    "url": "https://github.com/playerconnect/nodebb-theme-tsn-harmony",
     "screenshot": "screenshot.png"
 }
