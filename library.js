@@ -4,6 +4,8 @@ const nconf = require.main.require('nconf');
 const meta = require.main.require('./src/meta');
 const _ = require.main.require('lodash');
 const user = require.main.require('./src/user');
+const groups = require.main.require('./src/groups');
+const topics = require.main.require('./src/topics');
 
 const controllers = require('./lib/controllers');
 
@@ -198,4 +200,11 @@ library.removeFinalBreadcrumb = async (hookData) => {
 	}
 
 	return hookData;
+};
+
+library.actionTopicDevCheck = async function (hookData) {
+  const isInDevGroup = await groups.isMember(hookData.data.uid, 'SDS');
+  if (isInDevGroup) {
+    await topics.setTopicField(hookData.post.topic.tid, 'postedInByDeveloper', isInDevGroup);
+  }
 };
