@@ -1,0 +1,22 @@
+/* SDS topic-badge
+----------------------------------------------------------------- */
+.topic-badge {
+  line-height: 1 !important;
+}
+.topic-sds {
+  background: #3185ae;
+  padding: 6px;
+  color: #fff !important;
+  border-radius: 5px;
+  font: 700 10px/1 Lato,sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-transform: uppercase;
+}
+
+/* SDS post badge
+----------------------------------------------------------------- */
+.post-sds-badge {
+  --bs-badge-padding-x: 20px;
+  --bs-badge-padding-y: 4px;
+  --bs-badge-font-size: 12px;
+}

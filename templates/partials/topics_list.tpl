@@ -8,7 +8,7 @@
 		<meta itemprop="position" content="{./index}" />
 		<a id="{./index}" data-index="{./index}" component="topic/anchor"></a>
 
-		<div class="d-flex p-0 col-12 col-lg-7 gap-2 gap-lg-3 pe-1 align-items-start {{{ if config.theme.mobileTopicTeasers }}}mb-2 mb-lg-0{{{ end }}}">
+		<div class="d-flex p-0 col-12 col-lg-7 gap-2 gap-lg-3 pe-1 align-items-start">
 			<div class="flex-shrink-0 position-relative">
 				<a class="text-decoration-none" href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}">
 					{buildAvatar(./user, "40px", true, "avatar avatar-tooltip")}
@@ -49,6 +49,10 @@
 					<a class="lh-1" href="{config.relative_path}/category/{./category.slug}">{function.buildCategoryLabel, ./category, "border"}</a>
 					{{{ end }}}
 
+					{{{ if topics.postedInByDeveloper }}}
+					<span class="topic-badge"><a href="{config.relative_path}/groups/sds"><span class="topic-sds">SDS REPLY</span></a></span>
+					{{{ end }}}
+
 					<span data-tid="{./tid}" component="topic/tags" class="lh-1 tag-list hidden-xs d-flex flex-wrap gap-1 {{{ if !./tags.length }}}hidden{{{ end }}}">
 						{{{ each ./tags }}}
 						<a href="{config.relative_path}/tags/{./valueEncoded}"><span class="badge border border-gray-300 fw-normal tag tag-class-{./class}" data-tag="{./value}">{./valueEscaped}</span></a>
@@ -74,28 +78,29 @@
 			{{{ end }}}
 		</div>
 
-		<div class="d-flex p-0 col-lg-5 col-12 align-content-stretch">
+		<div class="d-flex p-0 col-lg-5 align-content-stretch">
 			<div class="meta stats d-none d-lg-grid col-6 gap-1 pe-2 text-muted" style="grid-template-columns: 1fr 1fr 1fr;">
 				{{{ if !reputation:disabled }}}
 				<div class="stats-votes card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
-					<span class="fs-5 ff-secondary lh-1" title="{./votes}">{humanReadableNumber(./votes, 0)}</span>
+					<span class="human-readable-number fs-5 ff-secondary lh-1" title="{./votes}" data-toFixed="0">{./votes}</span>
 					<span class="d-none d-xl-flex text-lowercase text-xs">[[global:votes]]</span>
 					<i class="d-xl-none fa fa-fw text-xs text-muted opacity-75 fa-chevron-up"></i>
 				</div>
 				{{{ end }}}
 				<div class="stats-postcount card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
-					<span class="fs-5 ff-secondary lh-1" title="{./postcount}">{humanReadableNumber(./postcount, 0)}</span>
+					<span class="human-readable-number fs-5 ff-secondary lh-1" title="{./postcount}" data-toFixed="0">{./postcount}</span>
 					<span class="d-none d-xl-flex text-lowercase text-xs">[[global:posts]]</span>
 					<i class="d-xl-none fa fa-fw text-xs text-muted opacity-75 fa-message"></i>
 				</div>
 				<div class="stats-viewcount card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
-					<span class="fs-5 ff-secondary lh-1" title="{./viewcount}">{humanReadableNumber(./viewcount, 0)}</span>
+					<span class="human-readable-number fs-5 ff-secondary lh-1" title="{./viewcount}" data-toFixed="0">{./viewcount}</span>
 					<span class="d-none d-xl-flex text-lowercase text-xs">[[global:views]]</span>
 					<i class="d-xl-none fa fa-fw text-xs text-muted opacity-75 fa-eye"></i>
 				</div>
 			</div>
-			<div component="topic/teaser" class="meta teaser col-lg-6 col-12 {{{ if !config.theme.mobileTopicTeasers }}}d-none d-lg-block{{{ end }}}">
-				<div class="lastpost border-start border-2 lh-sm h-100 d-flex flex-column gap-1" style="border-color: {./category.bgColor}!important;">
+			<div component="topic/teaser" class="meta teaser col-lg-6 {{{ if !config.theme.mobileTopicTeasers }}}d-none d-lg-block{{{ end }}}">
+				<div class="lastpost background-link-container border-start border-2 lh-sm h-100" style="border-color: {./category.bgColor}!important;">
+					<a class="background-link" href="{config.relative_path}/topic/{./slug}/{./teaser.index}"></a>
 					{{{ if ./unreplied }}}
 					<div class="ps-2 text-xs">
 						[[category:no_replies]]
@@ -107,8 +112,7 @@
 						<a class="permalink text-muted timeago text-xs" href="{config.relative_path}/topic/{./slug}/{./teaser.index}" title="{./teaser.timestampISO}">
 						</a>
 					</div>
-					<div class="post-content text-xs ps-2 line-clamp-sm-2 lh-sm text-break position-relative flex-fill">
-						<a class="stretched-link" href="{config.relative_path}/topic/{./slug}/{./teaser.index}"></a>
+					<div class="post-content text-xs ps-2 line-clamp-sm-2 lh-sm text-break">
 						{./teaser.content}
 					</div>
 					{{{ end }}}

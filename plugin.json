@@ -9,7 +9,9 @@
 		{ "hook": "filter:user.saveSettings", "method": "saveUserSettings" },
 		{ "hook": "filter:user.profileMenu", "method": "addProfileItem" },
 		{ "hook": "filter:middleware.renderHeader", "method": "filterMiddlewareRenderHeader" },
-		{ "hook": "filter:middleware.render", "method": "removeFinalBreadcrumb" }
+		{ "hook": "filter:middleware.render", "method": "removeFinalBreadcrumb" },
+		{ "hook": "action:topic.reply", "method": "actionTopicDevCheck" },
+    { "hook": "action:topic.post", "method": "actionTopicDevCheck" }
 	],
 	"scripts": [
 		"public/harmony.js"
