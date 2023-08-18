@@ -228,6 +228,9 @@
 		.border-bottom {
 			border-bottom: unset !important;
 		}
+		a {
+			color: #000;
+		}
 	}
 }
 
@@ -349,6 +352,9 @@
 		background: linear-gradient(-140deg, rgba(255,255,255,0) 30%, rgba(13,110,253,1) 100%) !important;
 		.border-bottom {
 			border-bottom: unset !important;
+		}
+		a {
+			color: #fff;
 		}
 	}
 	.text-body {
