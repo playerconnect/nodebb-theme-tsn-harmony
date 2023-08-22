@@ -8,11 +8,11 @@ $subsets: (latin, latin-ext);
 	$weights: $weights,
 	$subsets: $subsets,
 	$display: fallback,
-	$directory: "./plugins/nodebb-theme-harmony/inter"
+	$directory: "./plugins/nodebb-theme-tsn-harmony/inter"
 );
 @include Poppins.faces(
 	$weights: $weights,
 	$subsets: $subsets,
 	$display: fallback,
-	$directory: "./plugins/nodebb-theme-harmony/poppins"
+	$directory: "./plugins/nodebb-theme-tsn-harmony/poppins"
 );
