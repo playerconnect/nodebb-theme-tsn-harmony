@@ -20,3 +20,50 @@
   --bs-badge-padding-y: 4px;
   --bs-badge-font-size: 12px;
 }
+
+/* platform pills
+----------------------------------------------------------------- */
+.psn-pill {
+  background-color: #003697;
+  border: none;
+  color: #fff;
+  padding: 2px 12px;
+  text-align: center;
+  // margin: 0 auto;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.xbl-pill {
+  background-color: #107C10;
+  border: none;
+  color: #fff;
+  padding: 2px 12px;
+  text-align: center;
+  // margin: 0 auto;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.ts-pill {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  padding: 2px 12px;
+  text-align: center;
+  // margin: 0 auto;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.nsw-pill {
+  background-color: #E60012;
+  border: none;
+  color: #fff;
+  padding: 2px 12px;
+  text-align: center;
+  // margin: 0 auto;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 16px;
+}
