@@ -94,7 +94,9 @@
 		--bs-card-cap-color: #fff;
 		--bs-card-cap-bg: #220040;
 	}
-
+	[component="chat/user/list/username"] {
+		color: #fff !important;
+	}
 	.composer {
 		--composer-bg-color: #515151;
 		color: #fff;
@@ -303,6 +305,9 @@
 		--btn-primary-text-color: #fff;
 		--btn-focus-secondary-bg-color: #0a58ca;
 		--btn-primary-active-border-color: #0a58ca;
+	}
+	[component="chat/user/list/username"] {
+		color: #fff !important;
 	}
 	.composer {
 		--composer-bg-color: #424242;
