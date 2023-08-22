@@ -67,9 +67,6 @@
 	blockquote {
 		border-left: 2px solid #fff;
 	}
-	a {
-		--bs-link-color: #DFC538;
-	}
 	a:hover {
 		text-decoration: none;
 	}
@@ -164,6 +161,9 @@
 		.border-bottom {
 			border-bottom: unset !important;
 		}
+	}
+	ul.categories-list li.unread .title, ul.topics-list li.unread .title {
+		color: #DFC538;
 	}
 }
 
@@ -363,5 +363,8 @@
 	}
 	.text-dark {
 		color: #0a58ca !important;
+	}
+	.text-muted {
+		color: #999 !important;
 	}
 }
