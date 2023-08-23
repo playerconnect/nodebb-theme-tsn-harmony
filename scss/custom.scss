@@ -393,13 +393,13 @@
 //   overflow-y: auto;
 // }
 // NOTE: NodeBB
-.global-modal-content {
-  margin: 0 20px;
-  max-height: calc("100vh - 150px");
-  position: relative;
-  width: 90%;
-  overflow-y: auto;
-}
+// .global-modal-content {
+//   margin: 0 20px;
+//   max-height: calc("100vh - 150px");
+//   position: relative;
+//   width: 90%;
+//   overflow-y: auto;
+// }
 @media only screen and (min-width: 62em) {
   .global-modal-content {
     max-width: 640px;
@@ -413,6 +413,102 @@
     0 0px 0 1px rgba(10, 10, 10, 0.02);
   display: block;
   overflow: auto;
+}
+
+/* survey modal box */
+.survey-modal {
+  background-color: #131313;
+  color: #ffffff;
+  border-bottom: 1px solid #000000;
+  &:last-child { border-bottom: none; }
+  .survey-modal-heading {
+    padding: 20px 30px 10px;
+    span {
+      display: block;
+      margin: 0 0 10px;
+      font-size: 21px;
+      font-weight: bold;
+      text-align: center;
+    }
+    p { margin: 0; }
+  }
+  .survey-modal-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px 40px;
+    a {
+      display: inline-block;
+      margin: 5px;
+      text-align: center;
+    }
+  }
+}
+
+/* survey buttons */
+.survey-button {
+  width: 80%;
+  display: inline-block;
+  padding: 8px 15px;
+  background: #3273dc;
+  border: 1px solid #3273dc;
+  border-radius: 0;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  appearance: none;
+  &:focus,
+  &:hover {
+    background: #1f53a7;
+    border-color: #1f53a7;
+    outline: 0;
+    text-decoration: none;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &.button-outline {
+    background: transparent;
+    border: 1px solid #3273dc;
+    color: #3273dc;
+    &:focus,
+    &:hover {
+      border-color: #1f53a7;
+      color: #1f53a7;
+    }
+  }
+  &.button-clear {
+    background-color: transparent;
+    border-color: transparent;
+    color: #3273dc;
+    &:focus,
+    &:hover {
+      color: #1f53a7;
+    }
+  }
+  &.button-rounded {
+    border-radius: 4px;
+  }
+  &.button-full {
+    display: block;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 48em) {
+  .survey-modal {
+    .survey-modal-heading { text-align: center; }
+    .survey-modal-content {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 30px 40px;
+      a {
+        display: inline-block;
+        margin: 5px;
+      }
+    }
+  }
 }
 
 /* TOU Modal Box - NOTE: NODEBB ONLY
