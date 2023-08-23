@@ -130,13 +130,53 @@
 /* media queries */
 @media only screen and (min-width: 48em) {
   .fixed-ribbon {
-    max-width: 300px;
+    max-width: 438px;
   }
 }
 // NOTE: NodeBB ONLY!
 @media only screen and (max-width: 991px) {
   .fixed-ribbon {
-    bottom: 50px;
+    bottom: 68px;
+    left: 0;
+  }
+}
+
+/* TOU Modal Box - NOTE: NODEBB ONLY
+----------------------------------------------------------------- */
+.tou-modal {
+  background-color: #131313;
+  color: #ffffff;
+  border-bottom: 1px solid #000000;
+  .tou-modal-content {
+    word-break: break-word;
+    padding: 10px 30px 40px;
+    a {
+      display: inline-block;
+      margin: 5px;
+      text-align: center;
+    }
+  }
+  .tou-modal-footer {
+    padding: 10px 30px 40px;
+  }
+}
+.tou-button {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #3273dc;
+  border: 1px solid #3273dc;
+  border-radius: 0;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  appearance: none;
+  &:focus,
+  &:hover {
+    background: #1f53a7;
+    border-color: #1f53a7;
+    outline: 0;
+    text-decoration: none;
   }
 }
 
