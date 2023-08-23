@@ -27,7 +27,7 @@
 	<div class="layout-container d-flex justify-content-between pb-4 pb-md-0">
 		<!-- IMPORT partials/sidebar-left.tpl -->
 
-		<main id="panel" class="d-flex flex-column gap-3 flex-grow-1" style="min-width: 0;">
+		<main id="panel" class="d-flex flex-column gap-3 flex-grow-1 mt-3" style="min-width: 0;">
 			<div class="global-header">
 				<div class="global-header-inner">
 					<a id='theshow-link'>THESHOW.COM</a>
@@ -60,8 +60,9 @@
 						<a class="link-text" href="https://account.theshow.com/" onclick="gtag('event', 'Header', { 'event_category': 'My Account', 'event_label': 'Global Header - My Account Site'});">My Account</a>
 					</div>
 				</div>
+				<div class="theshow-notifications"></div>
 			</div>
-			<div class="theshow-notifications"></div>
+
 			<!-- IMPORT partials/header/brand.tpl -->
 			<script>
 				const headerEl = document.getElementById('header-menu');
