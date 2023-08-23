@@ -364,6 +364,67 @@
   padding: 0 15px;
 }
 
+/* Modal
+----------------------------------------------------------------- */
+/* close button */
+.global-modal-close {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.global-modal-close {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(10, 10, 10, 0.2);
+  border: none;
+  border-radius: 290486px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 0;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+}
+.global-modal-close::before,
+.global-modal-close::after {
+  background-color: white;
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform-origin: center center;
+}
+.global-modal-close::before {
+  height: 2px;
+  width: 50%;
+}
+.global-modal-close::after {
+  height: 50%;
+  width: 2px;
+}
+.global-modal-close:hover,
+.global-modal-close:focus {
+  background-color: rgba(10, 10, 10, 0.3);
+}
+.global-modal-close:active {
+  background-color: rgba(10, 10, 10, 0.4);
+}
+.global-modal-close {
+  background: none;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 40px;
+}
+
 /* modal */
 .global-modal,
 .global-modal-background {
@@ -384,22 +445,13 @@
 }
 .global-modal.is-active { display: flex; }
 .global-modal-background { background-color: rgba(10, 10, 10, 0.86); }
-// NOTE: RAILS and WORDPRESS
-// .global-modal-content {
-//   margin: 0 20px;
-//   max-height: calc(100vh - 160px);
-//   position: relative;
-//   width: 90%;
-//   overflow-y: auto;
-// }
-// NOTE: NodeBB
-// .global-modal-content {
-//   margin: 0 20px;
-//   max-height: calc("100vh - 150px");
-//   position: relative;
-//   width: 90%;
-//   overflow-y: auto;
-// }
+.global-modal-content {
+  margin: 0 20px;
+  max-height: calc(100vh - 150px);
+  position: relative;
+  width: 90%;
+  overflow-y: auto;
+}
 @media only screen and (min-width: 62em) {
   .global-modal-content {
     max-width: 640px;
