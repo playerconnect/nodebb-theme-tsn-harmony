@@ -303,6 +303,253 @@
   padding: 0 15px;
 }
 
+/* Modal
+----------------------------------------------------------------- */
+/* close button */
+.global-modal-close {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.global-modal-close {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(10, 10, 10, 0.2);
+  border: none;
+  border-radius: 290486px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 0;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+}
+.global-modal-close::before,
+.global-modal-close::after {
+  background-color: white;
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform-origin: center center;
+}
+.global-modal-close::before {
+  height: 2px;
+  width: 50%;
+}
+.global-modal-close::after {
+  height: 50%;
+  width: 2px;
+}
+.global-modal-close:hover,
+.global-modal-close:focus {
+  background-color: rgba(10, 10, 10, 0.3);
+}
+.global-modal-close:active {
+  background-color: rgba(10, 10, 10, 0.4);
+}
+.global-modal-close {
+  background: none;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 40px;
+}
+
+/* modal */
+.global-modal,
+.global-modal-background {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.global-modal {
+  align-items: center;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  z-index: 1031; // NOTE: greater than z-index of navbar
+}
+.global-modal.is-active { display: flex; }
+.global-modal-background { background-color: rgba(10, 10, 10, 0.86); }
+// NOTE: RAILS and WORDPRESS
+// .global-modal-content {
+//   margin: 0 20px;
+//   max-height: calc(100vh - 160px);
+//   position: relative;
+//   width: 90%;
+//   overflow-y: auto;
+// }
+// NOTE: NodeBB
+.global-modal-content {
+  margin: 0 20px;
+  max-height: calc(~"100vh - 150px");
+  position: relative;
+  width: 90%;
+  overflow-y: auto;
+}
+@media only screen and (min-width: 62em) {
+  .global-modal-content {
+    max-width: 640px;
+    &.modal-full-width { max-width: 80vw; }
+  }
+}
+
+/* modal box */
+.global-box {
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
+    0 0px 0 1px rgba(10, 10, 10, 0.02);
+  display: block;
+  overflow: auto;
+}
+
+/* survey modal box */
+.survey-modal {
+  background-color: #131313;
+  color: #ffffff;
+  border-bottom: 1px solid #000000;
+  &:last-child { border-bottom: none; }
+  .survey-modal-heading {
+    padding: 20px 30px 10px;
+    span {
+      display: block;
+      margin: 0 0 10px;
+      font-size: 21px;
+      font-weight: bold;
+      text-align: center;
+    }
+    p { margin: 0; }
+  }
+  .survey-modal-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px 40px;
+    a {
+      display: inline-block;
+      margin: 5px;
+      text-align: center;
+    }
+  }
+}
+
+/* survey buttons */
+.survey-button {
+  width: 80%;
+  display: inline-block;
+  padding: 8px 15px;
+  background: #3273dc;
+  border: 1px solid #3273dc;
+  border-radius: 0;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  appearance: none;
+  &:focus,
+  &:hover {
+    background: #1f53a7;
+    border-color: #1f53a7;
+    outline: 0;
+    text-decoration: none;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &.button-outline {
+    background: transparent;
+    border: 1px solid #3273dc;
+    color: #3273dc;
+    &:focus,
+    &:hover {
+      border-color: #1f53a7;
+      color: #1f53a7;
+    }
+  }
+  &.button-clear {
+    background-color: transparent;
+    border-color: transparent;
+    color: #3273dc;
+    &:focus,
+    &:hover {
+      color: #1f53a7;
+    }
+  }
+  &.button-rounded {
+    border-radius: 4px;
+  }
+  &.button-full {
+    display: block;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 48em) {
+  .survey-modal {
+    .survey-modal-heading { text-align: center; }
+    .survey-modal-content {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 30px 40px;
+      a {
+        display: inline-block;
+        margin: 5px;
+      }
+    }
+  }
+}
+
+/* TOU Modal Box - NOTE: NODEBB ONLY
+----------------------------------------------------------------- */
+.tou-modal {
+  background-color: #131313;
+  color: #ffffff;
+  border-bottom: 1px solid #000000;
+  .tou-modal-content {
+    word-break: break-word;
+    padding: 10px 30px 40px;
+    a {
+      display: inline-block;
+      margin: 5px;
+      text-align: center;
+    }
+  }
+  .tou-modal-footer {
+    padding: 10px 30px 40px;
+  }
+}
+.tou-button {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #3273dc;
+  border: 1px solid #3273dc;
+  border-radius: 0;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  appearance: none;
+  &:focus,
+  &:hover {
+    background: #1f53a7;
+    border-color: #1f53a7;
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
 /* SDS topic-badge
 ----------------------------------------------------------------- */
 .topic-badge {
