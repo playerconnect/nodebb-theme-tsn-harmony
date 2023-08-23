@@ -1,3 +1,145 @@
+/* Global Header
+----------------------------------------------------------------- */
+
+/* header */
+.global-header {
+  background-color: #000000;
+  color: #ffffff;
+  position: relative;
+  // margin: 0 auto;
+}
+.global-header-inner {
+  padding: 5px 15px;
+  max-width: 1600px;
+  flex-direction: row;
+  margin: auto;
+  font-size: 12px;
+  a { color: #ffffff; }
+}
+.global-header-links-right {
+  float: right;
+  a { margin-left: 20px; }
+  svg { margin-left: 20px; }
+  a:first-child { margin-left: 0px; }
+  svg:first-child { margin-left: 0px; }
+  .link-icon { fill: #ffffff; }
+}
+
+@media (min-width: 641px) {
+  .link-icon { display: none }
+  .link-text { display: inline-block }
+}
+
+@media (max-width: 640px) {
+  .global-header a { font-size: 16px; }
+  .global-header-inner { padding: 12px 15px; }
+  .link-icon {
+    display:inline-block;
+    width: 25px;
+    height: 25px;
+  }
+  .link-text { display: none }
+}
+
+/* Survey
+----------------------------------------------------------------- */
+.global-menu-survey {
+  display: none;
+  margin-left: 40px;
+  float: right;
+}
+.global-menu-survey-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 8px;
+  background: #d50032;
+  color: #ffffff;
+  cursor: pointer;
+}
+.global-toggle-survey {
+  width: 12px;
+  height: 12px;
+  fill: #ffffff;
+}
+.global-menu-survey-label {
+  display: none;
+}
+@media only screen and (min-width: 641px) {
+  .global-toggle-survey { margin: 0 5px 0 0; }
+  .global-menu-survey-label { display: block; }
+}
+@media only screen and (max-width: 640px) {
+  .global-menu-survey { margin-left: 20px }
+  .global-menu-survey-wrapper { padding: 4px 8px; }
+  .global-toggle-survey { height: 21px; width: 21px }
+}
+
+/* Sweepstakes
+----------------------------------------------------------------- */
+.global-sweepstakes {
+  background: #33d9b2;
+}
+.global-sweepstakes-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1600px;
+  margin: auto;
+  padding: 8px 15px;
+  background: #33d9b2;
+  color: black;
+  font-size: 14px;
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+    cursor: pointer;
+  }
+}
+.global-sweepstakes-container .trix-content {
+  flex-grow: 1;
+  padding: 0 15px;
+}
+
+/* Ribbon
+----------------------------------------------------------------- */
+.fixed-ribbon {
+  background: black;
+  color: white;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  z-index: 8;
+}
+.fixed-ribbon-controls {
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 11px 0 0;
+  a {
+    color: white;
+  }
+}
+.fixed-ribbon-content {
+  padding: 0 1rem 0.5rem;
+}
+// NOTE: RAILS ONLY
+// .fixed-ribbon-content .trix-content {
+//   margin-bottom: 30px;
+// }
+
+/* media queries */
+@media only screen and (min-width: 48em) {
+  .fixed-ribbon {
+    max-width: 300px;
+  }
+}
+// NOTE: NodeBB ONLY!
+@media only screen and (max-width: 991px) {
+  .fixed-ribbon {
+    bottom: 50px;
+  }
+}
+
 /* SDS topic-badge
 ----------------------------------------------------------------- */
 .topic-badge {
