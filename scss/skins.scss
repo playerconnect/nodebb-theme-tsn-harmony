@@ -163,6 +163,12 @@
 		--bs-body-color-rgb: #fff;
 		--bs-text-opacity: unset;
 	}
+	.textcomplete-dropdown {
+		--bs-tertiary-bg: #515151;
+	}
+	.textcomplete-item:hover {
+		--bs-tertiary-bg: #F931C5;
+	}
 	.text-dark {
 		color: #b4208d !important;
 	}
@@ -377,6 +383,12 @@
 	.text-body {
 		--bs-body-color-rgb: #fff;
 		--bs-text-opacity: unset;
+	}
+	.textcomplete-dropdown {
+		--bs-tertiary-bg: #515151;
+	}
+	.textcomplete-item:hover {
+		--bs-tertiary-bg: #0d6efd;
 	}
 	.text-dark {
 		color: #0a58ca !important;

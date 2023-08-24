@@ -194,6 +194,9 @@
 }
 .fixed-ribbon-content {
   padding: 0 1rem 0.5rem;
+  a {
+    color: blue;
+  }
 }
 // NOTE: NodeBB ONLY!
 @media only screen and (max-width: 991px) {
