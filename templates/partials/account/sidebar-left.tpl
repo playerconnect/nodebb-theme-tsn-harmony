@@ -59,6 +59,10 @@
 
 		{{{ if canEdit }}}
 		<hr class="w-100 my-2"/>
+		<a href="{config.relative_path}/user/{userslug}/edit" class="btn-ghost-sm text-xs
+		{{{ if template.account/edit }}}active{{{ end }}}">
+			<div class="flex-grow-1">[[user:edit-profile]]</div>
+		</a>
 		<a href="{config.relative_path}/user/{userslug}/settings" class="btn-ghost-sm text-xs
 			{{{ if template.account/settings }}}active{{{ end }}}">
 			<div class="flex-grow-1">[[user:settings]]</div>
