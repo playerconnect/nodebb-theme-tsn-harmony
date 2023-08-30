@@ -2,11 +2,11 @@
 	margin-top: 0px!important;
 }
 .account {
-	margin-top: 200px;
+	margin-top: 100px; // default value is 200px
 
-	@include media-breakpoint-up(md) {
-		margin-top: 300px;
-	}
+	// @include media-breakpoint-up(md) {
+	// 	margin-top: 300px;
+	// }
 
 	.categories {
 		[component="categories/category"] {
