@@ -6,18 +6,6 @@
 </div>
 <div class="row">
 	<div class="col-12 col-md-6">
-		{{{ if !disableCustomUserSkins }}}
-		<h6 class="fw-bold">[[user:select-skin]]</h6>
-		<div class="">
-			<select class="form-select form-select-sm" id="bootswatchSkin" data-property="bootswatchSkin">
-				{{{each bootswatchSkinOptions}}}
-				<option value="{bootswatchSkinOptions.value}" {{{ if bootswatchSkinOptions.selected }}}selected{{{ end }}}>{bootswatchSkinOptions.name}</option>
-				{{{end}}}
-			</select>
-		</div>
-		<hr/>
-		{{{ end }}}
-
 		{{{ if allowUserHomePage }}}
 		<h6 class="fw-bold">[[user:select-homepage]]</h6>
 		<div class="">
