@@ -618,3 +618,121 @@
 .posts [component="post"][data-index="-1"].isSolved {
 	border: 2px solid #198754 !important;
 }
+
+/* Footer
+----------------------------------------------------------------- */
+footer {
+  font-size: 14px;
+  background: #f7f7f7;
+  margin: 90px 0 0;
+  .footer-container {
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      max-width: 1600px;
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        .footer-social {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          padding: 30px;
+          border-bottom: 1px solid #ffffff;
+          a {
+            display: block;
+            margin: 0 15px;
+          }
+          a:first-child {
+            margin-left: 0;
+          }
+          a:last-child {
+            margin-right: 0;
+          }
+          svg {
+            margin: 0;
+            width: 32px;
+            vertical-align: middle;
+          }
+        }
+        .footer-icons {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          padding: 15px;
+          border-bottom: 1px solid #ffffff;
+          .esrb,
+          .esrbcert,
+          .psstudios {
+            max-height: 68px;
+          }
+          .mlb,
+          .sie,
+          .sds,
+          .mlbpa {
+            max-height: 48px;
+          }
+          img {
+            margin: 15px;
+          }
+          a {
+            display: inline-flex;
+          }
+        }
+      }
+      .footer-legal {
+        padding: 30px;
+        .footer-terms {
+          display: flex;
+          align-items: center;
+          margin: 0 0 30px;
+          flex-direction: column;
+          a {
+            display: block;
+            margin: 0 0 15px;
+            font-weight: bold;
+            color: #717171;
+            text-decoration: none;
+            &:hover { text-decoration: underline; }
+          }
+        }
+        .footer-copy { color: #717171; }
+      }
+    }
+  }
+}
+
+/* media queries */
+@media only screen and (min-width: 75em) {
+  footer {
+    .footer-container {
+      .footer-inner {
+        .footer-links {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px solid #ffffff;
+          .footer-social {
+            border-bottom: none;
+            margin-bottom: 2px;
+          }
+          .footer-icons {
+            border-bottom: none;
+          }
+        }
+        .footer-legal {
+          .footer-terms {
+            justify-content: flex-start;
+            flex-direction: row;
+            a {
+              margin-right: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
