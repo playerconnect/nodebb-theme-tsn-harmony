@@ -43,12 +43,12 @@
 								</a>
 							</div>
 							<div class="footer-icons">
-								<img alt="" class="mlbpa" src="/plugins/nodebb-theme-tsn-slick/images/mlbpa.png">
-								<img alt="" class="mlb" src="/plugins/nodebb-theme-tsn-slick/images/mlb.png">
-								<img alt="" class="sie" src="/plugins/nodebb-theme-tsn-slick/images/sie.png">
-								<img alt="" class="psstudios" src="/plugins/nodebb-theme-tsn-slick/images/ps-studios.png">
-								<img alt="" class="sds" src="/plugins/nodebb-theme-tsn-slick/images/sds.png">
-								<img alt="" class="esrb" src="/plugins/nodebb-theme-tsn-slick/images/esrbe.png">
+								<img alt="" class="mlbpa" src="/plugins/nodebb-theme-tsn-harmony/images/mlbpa.png">
+								<img alt="" class="mlb" src="/plugins/nodebb-theme-tsn-harmony/images/mlb.png">
+								<img alt="" class="sie" src="/plugins/nodebb-theme-tsn-harmony/images/sie.png">
+								<img alt="" class="psstudios" src="/plugins/nodebb-theme-tsn-harmony/images/ps-studios.png">
+								<img alt="" class="sds" src="/plugins/nodebb-theme-tsn-harmony/images/sds.png">
+								<img alt="" class="esrb" src="/plugins/nodebb-theme-tsn-harmony/images/esrbe.png">
 								<a href="https://www.esrb.org/confirm/scea-confirmation.aspx" target="_blank">
 									<img alt="" class="esrbcert" src="/plugins/nodebb-theme-tsn-slick/images/esrbcert.png">
 								</a>
