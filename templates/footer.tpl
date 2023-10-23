@@ -50,7 +50,7 @@
 								<img alt="" class="sds" src="/plugins/nodebb-theme-tsn-harmony/images/sds.png">
 								<img alt="" class="esrb" src="/plugins/nodebb-theme-tsn-harmony/images/esrbe.png">
 								<a href="https://www.esrb.org/confirm/scea-confirmation.aspx" target="_blank">
-									<img alt="" class="esrbcert" src="/plugins/nodebb-theme-tsn-slick/images/esrbcert.png">
+									<img alt="" class="esrbcert" src="/plugins/nodebb-theme-tsn-harmony/images/esrbcert.png">
 								</a>
 							</div>
 						</div>
