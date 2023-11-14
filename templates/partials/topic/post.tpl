@@ -109,7 +109,7 @@
 		{{{ if !reputation:disabled }}}
 		<div class="d-flex votes align-items-stretch">
 			<a component="post/upvote" href="#" class="btn-ghost-sm {{{ if posts.upvoted }}}upvoted{{{ end }}}">
-				<i class="fa fa-fw fa-chevron-up text-primary"></i>
+				<i class="fa fa-fw fa-heart text-primary"></i>
 			</a>
 
 			<meta itemprop="upvoteCount" content="{posts.upvotes}">
