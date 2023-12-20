@@ -816,3 +816,8 @@ footer {
     }
   }
 }
+
+/* timeline events:  SDOD-2692 */
+.timeline-event {
+  display: none !important;
+}
