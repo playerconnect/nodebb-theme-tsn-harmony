@@ -33,10 +33,6 @@
 			{{{ end }}}
 			{{{ end }}}
 
-			{{{ if posts.user.banned }}}
-			<span class="badge bg-danger rounded-1">[[user:banned]]</span>
-			{{{ end }}}
-
 			<div class="d-flex gap-1 align-items-center">
 				<span class="text-muted">
 					{{{ if posts.toPid }}}
