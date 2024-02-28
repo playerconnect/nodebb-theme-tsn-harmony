@@ -28,7 +28,7 @@
 		{{{ if isAdmin }}}
 		<li>
 			<a component="account/delete-account" href="#" class="dropdown-item rounded-1">[[user:delete-account-as-admin]]</a>
-			<a component="account/delete-content" href="#" class="dropdown-item rounded-1">[[user:deletecontent]]</a>
+			<a component="account/delete-content" href="#" class="dropdown-item rounded-1">[[user:delete-content]]</a>
 			<a component="account/delete-all" href="#" class="dropdown-item rounded-1">[[user:delete-all]]</a>
 		</li>
 		{{{ end }}}

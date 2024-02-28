@@ -209,7 +209,7 @@
 					<select class="form-select form-select-sm" data-property="{./name}">
 						<option value="none" {{{ if ./none }}}selected{{{ end }}}>[[notifications:none]]</option>
 						<option value="notification" {{{ if ./notification }}}selected{{{ end }}}>[[notifications:notification-only]]</option>
-						<option value="email" {{{ if ./email }}}selected{{{ end }}}>[[notifications:email_only]]</option>
+						<option value="email" {{{ if ./email }}}selected{{{ end }}}>[[notifications:email-only]]</option>
 						<option value="notificationemail" {{{ if ./notificationemail }}}selected{{{ end }}}>[[notifications:notification-and-email]]</option>
 					</select>
 				</div>
