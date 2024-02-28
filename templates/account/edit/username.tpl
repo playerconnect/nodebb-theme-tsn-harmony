@@ -1,6 +1,6 @@
 <!-- IMPORT partials/account/header.tpl -->
 
-<h3 class="fw-semibold fs-5">{{{ if isSelf }}}[[user:change_username]]{{{ else }}}[[pages:{template.name}, {username}]]{{{ end }}}</h3>
+<h3 class="fw-semibold fs-5">{{{ if isSelf }}}[[user:change-username]]{{{ else }}}[[pages:{template.name}, {username}]]{{{ end }}}</h3>
 
 <form class="form-horizontal edit-form">
 	<div class="mb-2">
@@ -12,8 +12,8 @@
 
 	{{{ if isSelf }}}
 	<div class="mb-2">
-		<label class="form-label fw-semibold text-sm" for="inputCurrentPassword">[[user:current_password]]</label>
-		<input autocomplete="off" class="form-control" type="password" id="inputCurrentPassword" placeholder="[[user:current_password]]" value=""{{{ if !hasPassword }}} disabled{{{ end }}}>
+		<label class="form-label fw-semibold text-sm" for="inputCurrentPassword">[[user:current-password]]</label>
+		<input autocomplete="off" class="form-control" type="password" id="inputCurrentPassword" placeholder="[[user:current-password]]" value=""{{{ if !hasPassword }}} disabled{{{ end }}}>
 	</div>
 	{{{ end }}}
 
@@ -21,7 +21,7 @@
 
 	<br/>
 	<div class="form-actions">
-		<button id="submitBtn" class="btn btn-primary btn-block"><i class="hide fa fa-spinner fa-spin"></i> [[user:change_username]]</button>
+		<button id="submitBtn" class="btn btn-primary btn-block"><i class="hide fa fa-spinner fa-spin"></i> [[user:change-username]]</button>
 	</div>
 </form>
 

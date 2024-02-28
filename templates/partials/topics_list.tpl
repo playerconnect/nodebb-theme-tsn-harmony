@@ -103,7 +103,7 @@
 					<a class="background-link" href="{config.relative_path}/topic/{./slug}/{./teaser.index}"></a>
 					{{{ if ./unreplied }}}
 					<div class="ps-2 text-xs">
-						[[category:no_replies]]
+						[[category:no-replies]]
 					</div>
 					{{{ else }}}
 					{{{ if ./teaser.pid }}}
