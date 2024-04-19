@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="d-flex flex-grow-1 flex-column w-100">
-				<div component="chat/room/title" class="room-name fw-semibold text-xs">
+				<div component="chat/room/title" class="room-name fw-semibold text-xs text-break">
 				{{{ if ./roomName}}}
 				{./roomName}
 				{{{ else }}}
@@ -34,7 +34,7 @@
 
 				{{{ if ./teaser }}}
 				<div class="teaser-content text-sm line-clamp-3 text-break">
-					<span href="#" class="text-decoration-none">{buildAvatar(./teaser.user, "14px", true)}</span>
+					{buildAvatar(./teaser.user, "14px", true, "align-middle")}
 					<strong class="text-xs fw-semibold teaser-username">{./teaser.user.username}:</strong>
 					{./teaser.content}
 				</div>
@@ -44,8 +44,8 @@
 		</div>
 		<div>
 			<button class="mark-read btn-ghost-sm" style="width: 1.5rem; height: 1.5rem;">
-				<i class="unread fa fa-2xs fa-circle text-primary {{{ if !./unread }}}hidden{{{ end }}}"></i>
-				<i class="read fa fa-2xs fa-circle-o text-secondary {{{ if ./unread }}}hidden{{{ end }}}"></i>
+				<i class="unread fa fa-2xs fa-circle text-primary {{{ if !./unread }}}hidden{{{ end }}}" aria-label="[[unread:mark-as-read]]"></i>
+				<i class="read fa fa-2xs fa-circle-o text-secondary {{{ if ./unread }}}hidden{{{ end }}}" aria-label="[[unread:mark-as-unread]]"></i>
 			</button>
 		</div>
 	</div>
