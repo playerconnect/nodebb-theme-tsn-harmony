@@ -99,21 +99,21 @@
 
 	<div component="post/actions" class="d-flex justify-content-end gap-1 post-tools">
 		<!-- IMPORT partials/topic/reactions.tpl -->
-		<a component="post/reply" href="#" class="btn-ghost-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="[[topic:reply]]"><i class="fa fa-fw fa-reply text-primary"></i></a>
-		<a component="post/quote" href="#" class="btn-ghost-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="[[topic:quote]]"><i class="fa fa-fw fa-quote-right text-primary"></i></a>
+		<a component="post/reply" href="#" class="btn btn-ghost btn-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="[[topic:reply]]"><i class="fa fa-fw fa-reply text-primary"></i></a>
+		<a component="post/quote" href="#" class="btn btn-ghost btn-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="[[topic:quote]]"><i class="fa fa-fw fa-quote-right text-primary"></i></a>
 
 		{{{ if !reputation:disabled }}}
 		<div class="d-flex votes align-items-stretch">
-			<a component="post/upvote" href="#" class="btn-ghost-sm {{{ if posts.upvoted }}}upvoted{{{ end }}}">
+			<a component="post/upvote" href="#" class="btn btn-ghost btn-sm {{{ if posts.upvoted }}}upvoted{{{ end }}}">
 				<i class="fa fa-fw fa-heart text-primary"></i>
 			</a>
 
 			<meta itemprop="upvoteCount" content="{posts.upvotes}">
 			<meta itemprop="downvoteCount" content="{posts.downvotes}">
-			<div class="d-inline-block px-2 mx-1 btn-ghost-sm" component="post/vote-count" data-votes="{posts.votes}">{posts.votes}</div>
+			<div class="d-inline-block px-2 mx-1 btn btn-ghost btn-sm" component="post/vote-count" data-votes="{posts.votes}">{posts.votes}</div>
 
 			{{{ if !downvote:disabled }}}
-			<a component="post/downvote" href="#" class="btn-ghost-sm {{{ if posts.downvoted }}}downvoted{{{ end }}}">
+			<a component="post/downvote" href="#" class="btn btn-ghost btn-sm {{{ if posts.downvoted }}}downvoted{{{ end }}}">
 				<i class="fa fa-fw fa-chevron-down text-primary"></i>
 			</a>
 			{{{ end }}}

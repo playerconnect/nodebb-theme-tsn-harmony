@@ -5,7 +5,7 @@
 		<h3 class="fw-semibold fs-5 mb-0">[[global:topics]]</h3>
 		{{{ if showSort }}}
 		<div class="btn-group bottom-sheet" component="thread/sort">
-			<button title="[[global:sort]]" class="btn-ghost-sm dropdown-toggle" data-bs-toggle="dropdown" type="button"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
+			<button title="[[global:sort]]" class="btn btn-ghost btn-sm dropdown-toggle" data-bs-toggle="dropdown" type="button"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
 			<ul class="dropdown-menu p-1 text-sm">
 				{{{each sortOptions }}}
 				<li><a class="dropdown-item rounded-1 d-flex align-items-center gap-2" href="{config.relative_path}{./url}">
@@ -20,9 +20,9 @@
 
 	<div class="d-flex gap-1">
 		{{{ if canEdit }}}
-		<a href="{config.relative_path}/user/{userslug}/topics" class="btn-ghost-sm fw-semibold {{{ if template.account/topics }}}active{{{ end }}}">[[global:header.recent]]</a>
-		<a href="{config.relative_path}/user/{userslug}/watched"class="btn-ghost-sm fw-semibold {{{ if template.account/watched }}}active{{{ end }}}">[[user:watched]]</a>
-		<a href="{config.relative_path}/user/{userslug}/ignored" class="btn-ghost-sm fw-semibold {{{ if template.account/ignored }}}active{{{ end }}}">[[user:ignored]]</a>
+		<a href="{config.relative_path}/user/{userslug}/topics" class="btn btn-ghost btn-sm fw-semibold {{{ if template.account/topics }}}active{{{ end }}}">[[global:header.recent]]</a>
+		<a href="{config.relative_path}/user/{userslug}/watched"class="btn btn-ghost btn-sm fw-semibold {{{ if template.account/watched }}}active{{{ end }}}">[[user:watched]]</a>
+		<a href="{config.relative_path}/user/{userslug}/ignored" class="btn btn-ghost btn-sm fw-semibold {{{ if template.account/ignored }}}active{{{ end }}}">[[user:ignored]]</a>
 		{{{ end }}}
 	</div>
 </div>
