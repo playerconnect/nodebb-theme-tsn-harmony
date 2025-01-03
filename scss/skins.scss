@@ -30,13 +30,12 @@
 
 :root {
   .skin-the-show-23 {
-    --base-bg-color: #160128;
+    --base-bg-color: #202020;
     --base-text-color: #fff;
-    --dropdown-bg-color: #515151;
     --bs-body-color: #fff;
+    --dropdown-bg-color: #fff;
     --bs-secondary-color: #999;
-    --bs-link-color-rgb: 223, 197, 56;
-    --bs-link-hover-color-rgb: 249, 49, 197;
+    --bs-link-color-rgb: 255, 255, 255;
     --bs-link-opacity: 1;
   }
 }
@@ -67,7 +66,10 @@
   }
   .btn-ghost.active,
   .btn-ghost:hover {
-    background-color: #6f0051;
+    background-color: #f931c5;
+    i {
+      color: rgb(255, 255, 255) !important;
+    }
   }
   .bg-primary {
     --bs-primary-rgb: 249, 49, 197;
@@ -106,7 +108,7 @@
   }
   .card-header {
     --bs-card-cap-color: #fff;
-    --bs-card-cap-bg: #220040;
+    --bs-card-cap-bg: #262626;
   }
   [component="chat/user/list/username"] {
     color: #fff !important;
@@ -457,12 +459,12 @@
 
 :root {
   .skin-the-show-24 {
-    --base-bg-color: #02163d;
+    --base-bg-color: #202020;
     --base-text-color: #fff;
     --bs-body-color: #fff;
     --dropdown-bg-color: #fff;
     --bs-secondary-color: #999;
-    --bs-link-color-rgb: 223, 197, 56;
+    --bs-link-color-rgb: 255, 255, 255;
     --bs-link-opacity: 1;
   }
 }
@@ -525,14 +527,14 @@
   }
   .card {
     --bs-card-bg: #fff;
-    --bs-card-border-color: #0b3279;
+    --bs-card-border-color: #262626;
   }
   .card-body {
     --bs-card-color: #000;
   }
   .card-header {
     --bs-card-cap-color: #fff;
-    --bs-card-cap-bg: #0b3279;
+    --bs-card-cap-bg: #262626;
   }
   [component="chat/user/list/username"] {
     color: #fff !important;
@@ -671,7 +673,10 @@
   }
   .btn-ghost.active,
   .btn-ghost:hover {
-    background-color: #914500;
+    background-color: #dd0005;
+    i {
+      color: rgb(255, 255, 255) !important;
+    }
   }
   .btn-link {
     --bs-btn-color: #dd0005;
@@ -684,7 +689,7 @@
     text-decoration: none;
   }
   .bg-primary {
-    --bs-primary-rgb: 232, 41, 28;
+    --bs-primary-rgb: 251, 121, 0;
     --bs-bg-opacity: 1;
   }
   .btn-primary {
@@ -789,11 +794,15 @@
       border-bottom: unset !important;
     }
   }
-  .lh-1 span.badge {
+  .lh-1 .badge {
     background-color: #dd0005 !important;
   }
-  span.icon {
+  .topics-list .badge.px-1 {
     background-color: #dd0005 !important;
+    border: #dd0005 !important;
+  }
+  span.icon {
+    background-color: #fb7800 !important;
   }
   .text-body {
     --bs-body-color-rgb: #fff;
