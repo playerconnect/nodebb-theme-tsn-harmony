@@ -82,7 +82,7 @@
 			{{{ end }}}
 		</div>
 
-		<div class="d-flex p-0 col-lg-5 col-12 align-content-stretch">
+		<div class="d-flex p-0 col-lg-5 col-12 align-content-stretch" style="justify-content: end;gap: 2;flex: 2;">
 			<div class="meta stats d-none d-lg-grid col-6 gap-1 pe-2 text-muted" style="grid-template-columns: 1fr 1fr;">
 				<div class="stats-postcount card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
 					<span class="fs-5 ff-secondary lh-1" title="{./postcount}">{humanReadableNumber(./postcount, 0)}</span>
