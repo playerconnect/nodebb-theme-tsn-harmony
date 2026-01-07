@@ -70,13 +70,21 @@
 								<a href="https://theshow.com/games/">MLB The Show Games</a>
 							</div>
 							<div class="footer-copy">
-								<p>Stubs is a registered trademark or trademark of Sony Interactive Entertainment LLC.</p>
-								<p>"PlayStation Family Mark", "PlayStation", "PS5 Logo", and "PS4 Logo" are registered trademarks or trademarks of Sony Interactive Entertainment Inc.</p>
-								<p>Microsoft, the Xbox Sphere mark, Series X|S logo, and Xbox Series X|S are trademarks of the Microsoft group of companies.</p>
-								<p>Nintendo Switch is a trademark of Nintendo.</p>
-								<p>Major League and Minor League Baseball trademarks and copyrights are used with permission of Major League Baseball. Visit MLB.com and MiLB.com. The Baseball Hall of Fame and Museum trademarks and copyrights are used with permission of the National Baseball Hall of Fame and Museum, Inc., as applicable. Visit the official website of the Hall of Fame at BaseballHall.org</p>
-								<p>Officially Licensed Product of MLB Players, Inc. MLBPA trademarks, copyrighted works and other intellectual property rights are owned and/or held by MLBPA and may not be used without the written consent of MLBPA or MLB Players, Inc. Visit MLBPLAYERS.com, the Players Choice on the web.</p>
-								<p>© 2024 Sony Interactive Entertainment LLC.</p>
+								<p>
+									“PlayStation Family Mark”, “PlayStation”, “PlayStation Studios logo”, “PS5 Logo”, and “Play Has No
+									Limits” are registered trademarks or trademarks of Sony Interactive Entertainment Inc. ©2026 Sony
+									Interactive Entertainment LLC. MLB and MiLB trademarks and copyrights are used with permission of
+									Major League Baseball. Visit MLB.com and MiLB.com. Officially Licensed Product of MLB Players, Inc.
+									MLBPA trademarks, copyrighted works and other intellectual property rights are owned and/or held by
+									MLBPA and may not be used without the written consent of MLBPA or MLB Players, Inc. Visit
+									MLBPLAYERS.com, the Players Choice on the web. The Baseball Hall of Fame and Museum trademarks
+									and copyrights are used with permission of the National Baseball Hall of Fame and Museum, Inc., as
+									applicable. Visit the official website of the Hall of Fame at BaseballHall.org. Official Licensee-Major
+									League Alumni Marketing, Inc. © MLAM. Officially Licensed by the Negro Leagues Baseball Museum, Inc.
+									Kansas City, MO. Stubs is a registered trademark or trademark of Sony Interactive Entertainment LLC.
+									Nintendo Switch is a trademark of Nintendo. All other trademarks are the property of their respective
+									owners.
+								</p>
 							</div>
 						</div>
 					</div>
