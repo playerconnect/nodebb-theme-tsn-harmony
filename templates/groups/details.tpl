@@ -1,4 +1,4 @@
-<div component="groups/container" class="groups details">
+<div component="groups/container" class="groups details flex-fill">
 	<div class="cover position-absolute start-0 top-0" component="groups/cover" style="background-image: url({group.cover:url}); background-position: {group.cover:position};">
 		<div class="container">
 			{{{ if group.isOwner }}}
@@ -7,7 +7,7 @@
 				<span class="resize p-2 m-2 rounded-1 text-bg-light opacity-75"><i class="fa fa-fw fa-arrows"></i></span>
 				<span class="remove p-2 m-2 rounded-1 text-bg-light opacity-75"><i class="fa fa-fw fa-times"></i></span>
 			</div>
-			<div class="save text-bg-primary">[[groups:cover-save]] <i class="fa fa-fw fa-floppy-o"></i></div>
+			<a href="#" class="save btn btn-primary">[[groups:cover-save]] <i class="fa fa-fw fa-floppy-o"></i></a>
 			<div class="indicator text-bg-primary">[[groups:cover-saving]] <i class="fa fa-fw fa-refresh fa-spin"></i></div>
 			{{{ end }}}
 		</div>
@@ -16,7 +16,7 @@
 	<div class="d-flex flex-column flex-md-row justify-content-md-between pb-4 mb-4 mt-2 border-bottom">
 		<div class="d-flex flex-column mt-1">
 			<div class="d-flex align-items-center gap-2">
-				<h3 class="mb-0">{group.displayName}</h3>
+				<h3 class="mb-0 text-capitalize">{group.displayName}</h3>
 			</div>
 			<div class="d-flex gap-2">
 				{group.descriptionParsed}
@@ -26,12 +26,12 @@
 				</div>
 			</div>
 		</div>
-		<div>
+		<div class="d-flex gap-2 align-items-start">
 			{{{ if loggedIn }}}
 			{function.membershipBtn, group}
 			{{{ end }}}
 			{{{ if isAdmin }}}
-			<a href="{config.relative_path}/admin/manage/groups/{group.nameEncoded}" target="_blank" class="btn btn-light"><i class="fa fa-gear"></i> [[user:edit]]</a>
+			<a href="{config.relative_path}/admin/manage/groups/{group.slug}" target="_blank" class="btn btn-light"><i class="fa fa-gear"></i> [[user:edit]]</a>
 			{{{ end }}}
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 				<div class="tab-pane fade show active" id="groups-posts" role="tabpanel">
 					<h3 class="fw-semibold fs-5 mb-0">[[global:posts]]</h3>
 					{{{ if !posts.length }}}
-					<div class="alert alert-info">[[groups:details.has-no-posts]]</div>
+					<div class="alert alert-info my-2">[[groups:details.has-no-posts]]</div>
 					{{{ end }}}
 					<!-- IMPORT partials/posts_list.tpl -->
 				</div>
