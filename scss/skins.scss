@@ -964,9 +964,17 @@
     --bs-nav-link-hover-color: #01dfdf;
   }
   .post-sds {
-    border: 1px solid #fb7800;
+    border: 1px solid #01dfdf;
     padding: 5px;
-    box-shadow: 0 0 10px #fb7800;
+    box-shadow: 0 0 10px #01dfdf;
+    .border-bottom {
+      border-bottom: unset !important;
+    }
+  }
+  .post-community-mod {
+    border: 1px solid #39d12d;
+    padding: 5px;
+    box-shadow: 0 0 10px #39d12d;
     .border-bottom {
       border-bottom: unset !important;
     }
