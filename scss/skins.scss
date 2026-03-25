@@ -814,3 +814,195 @@
     color: #ffde00;
   }
 }
+
+:root {
+  .skin-the-show-26 {
+    --base-bg-color: #202020;
+    --base-text-color: #fff;
+    --bs-body-color: #fff;
+    --dropdown-bg-color: #fff;
+    --bs-secondary-color: #999;
+    --bs-link-color-rgb: 255, 255, 255;
+    --bs-link-opacity: 1;
+  }
+}
+
+.skin-the-show-26 {
+  a:hover {
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    --base-trim-color: #01dfdf;
+  }
+  body {
+    --bs-body-color: #fff;
+  }
+  blockquote {
+    border-left: 2px solid #fff;
+  }
+  .bottombar-nav .nav-text {
+    color: #fff;
+  }
+  .breadcrumb {
+    .breadcrumb-item {
+      span {
+        color: #fb7800;
+      }
+    }
+  }
+  .btn-ghost.active,
+  .btn-ghost:hover {
+    background-color: #01dfdf;
+    i {
+      color: rgb(255, 255, 255) !important;
+    }
+  }
+  .btn-link {
+    --bs-btn-color: #fb7800;
+    --btn-primary-border-color: #fb7800;
+    --bs-btn-color: #fff;
+  }
+  .btn-link:hover {
+    background-color: #01dfdf;
+    color: #fff;
+    text-decoration: none;
+  }
+  .bg-primary {
+    --bs-primary-rgb: 251, 121, 0;
+    --bs-bg-opacity: 1;
+  }
+  .btn-primary {
+    --btn-primary-bg-color: #fb7800;
+    --btn-primary-border-color: #fb7800;
+    --bs-btn-color: #fff;
+  }
+  .btn-primary.active,
+  .btn-primary:active {
+    --btn-primary-active-bg-color: #fb7800;
+    --btn-hover-border-color: #01dfdf;
+    --btn-primary-text-color: #fff;
+  }
+  .btn-primary.active:hover {
+    --btn-primary-text-color: #fff;
+    --btn-focus-secondary-bg-color: #fb7800;
+    --btn-primary-active-border-color: #fb7800;
+  }
+  .btn-ghost-sm.active,
+  .btn-ghost-sm:hover {
+    background-color: #01dfdf;
+  }
+  .btn-primary:hover {
+    --btn-primary-hover-bg-color: #01dfdf;
+    --btn-primary-hover-border-color: #01dfdf;
+  }
+  .card {
+    --bs-card-bg: #fff;
+    --bs-card-border-color: #fb7800;
+  }
+  .card-body {
+    --bs-card-color: #000;
+  }
+  .card-header {
+    --bs-card-cap-color: #fff;
+    --bs-card-cap-bg: #262626;
+  }
+  [component="chat/user/list/username"] {
+    color: #fff !important;
+  }
+  .composer {
+    --composer-bg-color: #515151;
+    color: #fff;
+    .write-container {
+      .write {
+        --composer-secondary-bg-color: #02163d;
+        --composer-border-color: #fff;
+      }
+    }
+    .preview {
+      --composer-border-color: #e9ecef;
+    }
+  }
+  .dropdown-header {
+    --bs-dropdown-header-color: #999;
+  }
+  .dropdown-item {
+    --bs-dropdown-bg: #515151;
+    --bs-dropdown-link-color: #fff;
+  }
+  .dropdown-item:focus,
+  .dropdown-item:hover {
+    --bs-dropdown-link-hover-color: #fff;
+    --bs-dropdown-link-hover-bg: #01dfdf;
+  }
+  .dropdown-menu {
+    --bs-dropdown-color: #fff;
+    --bs-dropdown-bg: #515151;
+  }
+  .form-check-input {
+    border: 1px solid #fff;
+  }
+  .form-select {
+    color: #fff;
+  }
+  .form-control {
+    color: #fff;
+    --bs-border-color: #e9ecef;
+  }
+  .modal-content {
+    --bs-modal-bg: #515151;
+    --bs-modal-color: #fff;
+    --modal-bg-color: #515151;
+  }
+  .nav-link {
+    --bs-nav-link-color: #fb7800;
+  }
+  .nav-link.active {
+    background-color: #ffffff24;
+  }
+  .nav-link:hover {
+    --bs-nav-link-hover-color: #01dfdf;
+  }
+  .post-sds {
+    border: 1px solid #fb7800;
+    padding: 5px;
+    box-shadow: 0 0 10px #fb7800;
+    .border-bottom {
+      border-bottom: unset !important;
+    }
+  }
+  .lh-1 .badge {
+    background-color: #fb7800 !important;
+  }
+  .topics-list .badge.px-1 {
+    background-color: #fb7800 !important;
+    border: #fb7800 !important;
+  }
+  span.icon {
+    background-color: #01dfdf !important;
+  }
+  .text-body {
+    --bs-body-color-rgb: #fff;
+    --bs-text-opacity: unset;
+  }
+  .textcomplete-dropdown {
+    --bs-tertiary-bg: #515151;
+    color: #fff;
+  }
+  .textcomplete-item:hover {
+    --bs-tertiary-bg: #01dfdf;
+  }
+  .text-dark {
+    color: #fb7800 !important;
+  }
+  .text-muted {
+    color: #999 !important;
+  }
+  .tooltip-inner {
+    color: #fb7800;
+  }
+  ul.categories-list li.unread .title,
+  ul.topics-list li.unread .title {
+    color: #fb7800;
+  }
+}
