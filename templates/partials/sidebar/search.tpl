@@ -2,13 +2,13 @@
 	<span>
 		<i class="fa fa-search fa-fw"></i>
 	</span>
-	<span class="nav-text small visible-open fw-semibold">[[global:search]]</span>
+	<span class="nav-text small visible-open fw-semibold">{{tx("global:search")}}</span>
 </a>
 <div class="search-dropdown dropdown-menu p-2 shadow">
 	<form component="search/form" id="search-form" class="d-flex justify-content-end align-items-center" role="search" method="GET">
 		<div component="search/fields" class="w-100" id="search-fields">
 			<div class="d-flex gap-1">
-				<input autocomplete="off" type="text" class="form-control" placeholder="[[global:search]]" name="query" value="">
+				<input autocomplete="off" type="text" class="form-control" placeholder="{{tx("global:search")}}" name="query" value="">
 
 				<div class="btn-ghost advanced-search-link">
 					<i class="fa fa-gears fa-fw text-muted"></i>
@@ -24,7 +24,7 @@
 				<div class="text-center loading-indicator"><i class="fa fa-spinner fa-spin"></i></div>
 				<div class="quick-search-results-container"></div>
 			</div>
-			<button type="submit" class="btn btn-outline-secondary hide">[[global:search]]</button>
+			<button type="submit" class="btn btn-outline-secondary hide">{{tx("global:search")}}</button>
 		</div>
 	</form>
 </div>

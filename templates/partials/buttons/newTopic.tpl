@@ -1,6 +1,6 @@
 <noscript><div class="dropdown" component="category-selector"></noscript>
 <button component="category/post" for="category-dropdown-check" class="btn btn-primary btn-sm text-nowrap" id="new_topic" role="button">
-	[[category:new-topic-button]]
+	{{tx("category:new-topic-button")}}
 </button>
 <noscript>
 	<input type="checkbox" class="hidden" id="category-dropdown-check" aria-hidden="true">
@@ -10,7 +10,7 @@
 			<a role="menu-item" href="{config.relative_path}/compose?cid={categories.cid}">{categories.level}
 				<span component="category-markup">
 					<div class="category-item d-inline-block">
-						{buildCategoryIcon(@value, "24px", "rounded-circle")}
+						{{buildCategoryIcon(@value, "24px", "rounded-circle")}}
 						{categories.name}
 					</div>
 				</span>

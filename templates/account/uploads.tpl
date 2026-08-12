@@ -1,13 +1,13 @@
 <!-- IMPORT partials/account/header.tpl -->
 
-<h3 class="fw-semibold fs-5">{title}</h3>
+<h3 class="fw-semibold fs-5">{{tx(title)}}</h3>
 
 <div class="alert alert-info text-center">
-	{{{ if privateUploads }}}[[uploads:private-uploads-info]]{{{ else }}}[[uploads:public-uploads-info]]{{{ end }}}
+	{{{ if privateUploads }}}{{tx("uploads:private-uploads-info")}}{{{ else }}}{{tx("uploads:public-uploads-info")}}{{{ end }}}
 </div>
 
 {{{ if !uploads.length }}}
-<div class="alert alert-warning text-center">[[uploads:no-uploads-found]]</div>
+<div class="alert alert-warning text-center">{{tx("uploads:no-uploads-found")}}</div>
 {{{ end }}}
 
 <table class="table table-striped table-responsive">
@@ -19,7 +19,7 @@
 	</thead>
 	<tbody>
 		{{{ each uploads }}}
-		<tr data-name="{./name}">
+		<tr data-name="{{tx(./name)}}">
 			<td>
 				<a class="text-break" href="{config.relative_path}{./url}">{./url}</a>
 			</td>

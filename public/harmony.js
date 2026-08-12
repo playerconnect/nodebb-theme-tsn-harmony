@@ -9,6 +9,7 @@ $(document).ready(function () {
 	handleMobileNavigator();
 	setupNavTooltips();
 	fixPlaceholders();
+	fixSidebarOverflow();
 
 	function setupSkinSwitcher() {
 		$('[component="skinSwitcher"]').on('click', '.dropdown-item', function () {
@@ -31,13 +32,14 @@ $(document).ready(function () {
 			const css = {
 				width: $('#panel').width(),
 			};
-			css[isRtl ? 'right' : 'left'] = $('.sidebar-left').outerWidth(true);
+			const sidebarEl = $('.sidebar-left');
+			css[isRtl ? 'right' : 'left'] = sidebarEl.is(':visible') ? sidebarEl.outerWidth(true) : 0;
 			$('[component="composer"]').css(css);
 		});
 
 		hooks.on('filter:chat.openChat', function (hookData) {
 			// disables chat modals & goes straight to chat page based on user setting
-			hookData.modal = config.theme.chatModals;
+			hookData.modal = config.theme.chatModals && !utils.isMobile();
 			return hookData;
 		});
 	});
@@ -61,19 +63,18 @@ $(document).ready(function () {
 			});
 
 			const bottomBar = $('[component="bottombar"]');
+			let stickyTools = null;
+			const location = config.theme.topMobilebar ? 'top' : 'bottom';
 			const $body = $('body');
 			const $window = $(window);
-			$body.on('shown.bs.dropdown', '.sticky-tools', function () {
-				bottomBar.addClass('hidden');
-			});
-			$body.on('hidden.bs.dropdown', '.sticky-tools', function () {
-				bottomBar.removeClass('hidden');
+			$body.on('shown.bs.dropdown hidden.bs.dropdown', '.sticky-tools', function () {
+				bottomBar.toggleClass('hidden', $(this).find('.dropdown-menu.show').length);
 			});
 			function isSearchVisible() {
 				return !!$('[component="bottombar"] [component="sidebar/search"] .search-dropdown.show').length;
 			}
 
-			let lastScrollTop = 0;
+			let lastScrollTop = $window.scrollTop();
 			let newPostsLoaded = false;
 
 			function onWindowScroll() {
@@ -87,12 +88,18 @@ $(document).ready(function () {
 					const diff = Math.abs(st - lastScrollTop);
 					const scrolledDown = st > lastScrollTop;
 					const scrolledUp = st < lastScrollTop;
-					if (diff > 5) {
+					const isHiding = !scrolledUp && scrolledDown;
+					if (diff > 10) {
 						bottomBar.css({
-							bottom: !scrolledUp && scrolledDown ?
+							[location]: isHiding ?
 								-bottomBar.find('.bottombar-nav').outerHeight(true) :
 								0,
 						});
+						if (stickyTools && config.theme.topMobilebar && config.theme.autohideBottombar) {
+							stickyTools.css({
+								top: isHiding ? 0 : 'var(--panel-offset)',
+							});
+						}
 					}
 				}
 				lastScrollTop = st;
@@ -115,9 +122,14 @@ $(document).ready(function () {
 				setTimeout(enableAutohide, 250);
 			});
 			hooks.on('action:ajaxify.end', function () {
+				bottomBar.removeClass('hidden');
+				const { template } = ajaxify.data;
+				stickyTools = (template.category || template.topic) ? $('.sticky-tools') : null;
 				$window.off('scroll', delayedScroll);
-				bottomBar.css({ bottom: 0 });
-				setTimeout(enableAutohide, 250);
+				if (config.theme.autohideBottombar) {
+					bottomBar.css({ [location]: 0 });
+					setTimeout(enableAutohide, 250);
+				}
 			});
 		});
 	}
@@ -129,14 +141,12 @@ $(document).ready(function () {
 	}
 
 	function setupDrafts() {
-		require(['composer/drafts', 'bootbox'], function (drafts, bootbox) {
+		require(['composer/drafts', 'modals', 'api'], function (drafts, modals, api) {
 			const draftsEl = $('[component="sidebar/drafts"]');
-
+			const bottomBarDraftsEl = $('[component="bottombar"] [component="sidebar/drafts"]');
 			function updateBadgeCount() {
 				const count = drafts.getAvailableCount();
-				if (count > 0) {
-					draftsEl.removeClass('hidden');
-				}
+				bottomBarDraftsEl.toggleClass('hidden', count === 0);
 				$('[component="drafts/count"]').toggleClass('hidden', count <= 0).text(count);
 			}
 
@@ -149,14 +159,15 @@ $(document).ready(function () {
 					draftListEl.find('.draft-item-container').html('');
 					return;
 				}
-				draftItems.reverse().forEach((draft) => {
-					if (draft) {
-						draft.text = utils.escapeHTML(
-							draft.text
-						).replace(/(?:\r\n|\r|\n)/g, '<br>');
+				draftItems.reverse();
+				await Promise.all(draftItems.map(async (item) => {
+					const cid = String(item.cid);
+					if (item && item.action === 'topics.post' && cid !== '0') {
+						const categoryUrl = cid !== '-1' ?
+							`/api/category/${encodeURIComponent(cid)}` : `/api/world`;
+						item.category = await api.get(categoryUrl, {});
 					}
-				});
-
+				}));
 				const html = await app.parseAndTranslate('partials/sidebar/drafts', 'drafts', { drafts: draftItems });
 				draftListEl.find('.no-drafts').addClass('hidden');
 				draftListEl.find('.placeholder-wave').addClass('hidden');
@@ -172,11 +183,15 @@ $(document).ready(function () {
 
 			draftsEl.on('click', '[component="drafts/delete"]', function () {
 				const save_id = $(this).attr('data-save-id');
-				bootbox.confirm('[[modules:composer.discard-draft-confirm]]', function (ok) {
-					if (ok) {
-						drafts.removeDraft(save_id);
-						renderDraftList();
-					}
+				modals.confirm({
+					title: '[[modules:bootbox.confirm]]',
+					message: '[[modules:composer.discard-draft-confirm]]',
+					callback: function (ok) {
+						if (ok) {
+							drafts.removeDraft(save_id);
+							renderDraftList();
+						}
+					},
 				});
 				return false;
 			});
@@ -236,7 +251,8 @@ $(document).ready(function () {
 		tooltipEls.on('mouseenter', function (ev) {
 			const target = $(ev.target);
 			const isDropdown = target.hasClass('dropdown-menu') || !!target.parents('.dropdown-menu').length;
-			if (!$('.sidebar').hasClass('open') && !isDropdown) {
+			const isSidebarOpen = target.parents('.sidebar').hasClass('open');
+			if (!isSidebarOpen && !isDropdown) {
 				$(this).tooltip('show');
 			}
 		});
@@ -250,23 +266,34 @@ $(document).ready(function () {
 			return;
 		}
 		['notifications', 'chat'].forEach((type) => {
-			const countEl = document.querySelector(`[component="${type}/count"]`);
-			if (!countEl) {
+			const countEl = $(`nav.sidebar [component="${type}/count"]`).first();
+			if (!countEl.length) {
 				return;
 			}
-			const count = parseInt(countEl.innerText, 10);
+			const count = parseInt(countEl.text(), 10);
 			if (count > 1) {
-				const listEls = document.querySelectorAll(`[component="${type}/list"]`);
-				listEls.forEach((listEl) => {
-					const placeholder = listEl.querySelector('*');
-					if (placeholder) {
-						for (let x = 0; x < count - 1; x++) {
-							const cloneEl = placeholder.cloneNode(true);
-							listEl.insertBefore(cloneEl, placeholder);
-						}
+				const listEls = $(`.dropdown-menu [component="${type}/list"]`);
+				listEls.each((index, el) => {
+					const placeholder = $(el).children().first();
+					for (let x = 0; x < count - 1; x++) {
+						const cloneEl = placeholder.clone(true);
+						cloneEl.insertAfter(placeholder);
 					}
 				});
 			}
 		});
+	}
+
+	function fixSidebarOverflow() {
+		// overflow-y-auto needs to be removed on main-nav when dropdowns are opened
+		const mainNavEl = $('#main-nav');
+		function toggleOverflow() {
+			mainNavEl.toggleClass(
+				'overflow-y-auto',
+				!mainNavEl.find('.dropdown-menu.show').length
+			);
+		}
+		mainNavEl.on('shown.bs.dropdown', toggleOverflow)
+			.on('hidden.bs.dropdown', toggleOverflow);
 	}
 });

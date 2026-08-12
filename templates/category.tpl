@@ -1,17 +1,17 @@
 <!-- IMPORT partials/breadcrumbs.tpl -->
 <div class="d-flex flex-column gap-2">
 	<div class="d-flex gap-2 align-items-center mb-1 {{{ if config.theme.centerHeaderElements }}}justify-content-center{{{ end }}}">
-		{buildCategoryIcon(@value, "40px", "rounded-1 flex-shrink-0")}
-		<h2 class="tracking-tight fs-2 fw-semibold mb-0 text-center">{./name}</h2>
+		{{buildCategoryIcon(@value, "40px", "rounded-1 flex-shrink-0")}}
+		<h2 class="tracking-tight fs-2 fw-semibold mb-0 text-center">{{tx(./name)}}</h2>
 	</div>
 	<div class="d-flex flex-wrap gap-2 {{{ if config.theme.centerHeaderElements }}}justify-content-center{{{ end }}}">
 		<span class="badge text-body border border-gray-300 stats text-xs">
 			<span title="{totalTopicCount}" class="fw-bold">{humanReadableNumber(totalTopicCount)}</span>
-			<span class="text-lowercase fw-normal">[[global:topics]]</span>
+			<span class="text-lowercase fw-normal">{{tx("global:topics")}}</span>
 		</span>
 		<span class="badge text-body border border-gray-300 stats text-xs">
 			<span title="{totalPostCount}" class="fw-bold">{humanReadableNumber(totalPostCount)}</span>
-			<span class="text-lowercase fw-normal">[[global:posts]]</span>
+			<span class="text-lowercase fw-normal">{{tx("global:posts")}}</span>
 		</span>
 	</div>
 </div>
@@ -34,7 +34,7 @@
 		{{{ if !topics.length }}}
 		{{{ if privileges.topics:create }}}
 		<div class="alert alert-info" id="category-no-topics">
-			[[category:no-topics]]
+			{{tx("category:no-topics")}}
 		</div>
 		{{{ end }}}
 		{{{ end }}}

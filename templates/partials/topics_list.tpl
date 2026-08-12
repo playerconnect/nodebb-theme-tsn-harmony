@@ -3,7 +3,7 @@
 	{{{ each topics }}}
 	<li component="category/topic" class="category-item hover-parent border-bottom py-3 py-lg-2 d-flex flex-column flex-lg-row align-items-start {function.generateTopicClass}" <!-- IMPORT partials/data/category.tpl -->>
 		<link itemprop="url" content="{config.relative_path}/topic/{./slug}" />
-		<meta itemprop="name" content="{function.stripTags, ./title}" />
+		<meta itemprop="name" content="{./title}" />
 		<meta itemprop="itemListOrder" content="descending" />
 		<meta itemprop="position" content="{increment(./index, "1")}" />
 		<a id="{./index}" data-index="{./index}" component="topic/anchor"></a>
@@ -18,42 +18,44 @@
 			</div>
 			<div class="flex-grow-1 d-flex flex-wrap gap-1 position-relative">
 				<h3 component="topic/header" class="title text-break fs-5 fw-semibold m-0 tracking-tight w-100 {{{ if showSelect }}}me-4 me-lg-0{{{ end }}}">
-					<a class="text-reset" href="{{{ if topics.noAnchor }}}#{{{ else }}}{config.relative_path}/topic/{./slug}{{{ if ./bookmark }}}/{./bookmark}{{{ end }}}{{{ end }}}">{./title}</a>
+					<a class="text-reset" href="{{{ if topics.noAnchor }}}#{{{ else }}}{config.relative_path}/topic/{./slug}{{{ if ./bookmark }}}/{./bookmark}{{{ end }}}{{{ end }}}">{{{ if ./txTitle }}}{{tx(./title)}}{{{ else }}}{./title}{{{ end }}}</a>
 				</h3>
 				<span component="topic/labels" class="d-flex flex-wrap gap-1 w-100">
 					<span component="topic/watched" class="badge border border-gray-300 text-body {{{ if !./followed }}}hidden{{{ end }}}">
 						<i class="fa fa-bell-o"></i>
-						<span>[[topic:watching]]</span>
+						<span>{{tx("topic:watching")}}</span>
 					</span>
 					<span component="topic/ignored" class="badge border border-gray-300 text-body {{{ if !./ignored }}}hidden{{{ end }}}">
 						<i class="fa fa-eye-slash"></i>
-						<span>[[topic:ignoring]]</span>
+						<span>{{tx("topic:ignoring")}}</span>
 					</span>
 					<span component="topic/scheduled" class="badge border border-gray-300 text-body {{{ if !./scheduled }}}hidden{{{ end }}}">
 						<i class="fa fa-clock-o"></i>
-						<span>[[topic:scheduled]]</span>
+						<span>{{tx("topic:scheduled")}}</span>
 					</span>
 					<span component="topic/pinned" class="badge border border-gray-300 text-body {{{ if (./scheduled || !./pinned) }}}hidden{{{ end }}}">
 						<i class="fa fa-thumb-tack"></i>
-						<span>{{{ if !./pinExpiry }}}[[topic:pinned]]{{{ else }}}[[topic:pinned-with-expiry, {isoTimeToLocaleString(./pinExpiryISO, config.userLang)}]]{{{ end }}}</span>
+						<span>{{{ if !./pinExpiry }}}{{tx("topic:pinned")}}{{{ else }}}{{tx("topic:pinned-with-expiry", isoTimeToLocaleString(./pinExpiryISO, config.userLang))}}{{{ end }}}</span>
 					</span>
 					<span component="topic/locked" class="badge border border-gray-300 text-body {{{ if !./locked }}}hidden{{{ end }}}">
 						<i class="fa fa-lock"></i>
-						<span>[[topic:locked]]</span>
+						<span>{{tx("topic:locked")}}</span>
 					</span>
 					<span component="topic/moved" class="badge border border-gray-300 text-body {{{ if !./oldCid }}}hidden{{{ end }}}">
 						<i class="fa fa-arrow-circle-right"></i>
-						<span>[[topic:moved]]</span>
+						<span>{{tx("topic:moved")}}</span>
 					</span>
-					{{{each ./icons}}}<span class="lh-1">{@value}</span>{{{end}}}
+					{{{ each ./icons }}}
+					<!-- IMPORT partials/topic/icon.tpl -->
+					{{{ end }}}
 
 					{{{ if !template.category }}}
-					{function.buildCategoryLabel, ./category, "a", "border"}
+					{{function.buildCategoryLabel, ./category, "a", "border"}}
 					{{{ end }}}
 
 					<span data-tid="{./tid}" component="topic/tags" class="lh-1 tag-list hidden-xs d-flex flex-wrap gap-1 {{{ if !./tags.length }}}hidden{{{ end }}}">
 						{{{ each ./tags }}}
-						<a href="{config.relative_path}/tags/{./valueEncoded}"><span class="badge border border-gray-300 fw-normal tag tag-class-{./class}" data-tag="{./value}">{./valueEscaped}</span></a>
+						<a href="{config.relative_path}/tags/{./valueEncoded}"><span class="badge border border-gray-300 fw-normal tag tag-class-{./class}" data-tag="{./value}">{./value}</span></a>
 						{{{ end }}}
 					</span>
 
@@ -75,7 +77,7 @@
 				{{{ end }}}
 			</div>
 			{{{ if ./thumbs.length }}}
-			<a class="topic-thumbs position-relative text-decoration-none flex-shrink-0 d-none d-xl-block" href="{config.relative_path}/topic/{./slug}{{{ if ./bookmark }}}/{./bookmark}{{{ end }}}" aria-label="[[topic:thumb-image]]">
+			<a class="topic-thumbs position-relative text-decoration-none flex-shrink-0 d-none d-xl-block" href="{config.relative_path}/topic/{./slug}{{{ if ./bookmark }}}/{./bookmark}{{{ end }}}" aria-label="{{tx("topic:thumb-image")}}">
 				<img class="topic-thumb rounded-1 bg-light" style="width:auto;max-width: 5.33rem;height: 3.33rem;object-fit: contain;" src="{./thumbs.0.url}" alt=""/>
 				<span data-numthumbs="{./thumbs.length}" class="px-1 position-absolute top-0 start-100 translate-middle badge rounded text-bg-info" style="z-index: 1;">+{increment(./thumbs.length, "-1")}</span>
 			</a>
@@ -86,12 +88,12 @@
 			<div class="meta stats d-none d-lg-grid col-6 gap-1 pe-2 text-muted" style="grid-template-columns: 1fr 1fr;">
 				<div class="stats-postcount card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
 					<span class="fs-5 ff-secondary lh-1" title="{./postcount}">{humanReadableNumber(./postcount, 0)}</span>
-					<span class="d-none d-xl-flex text-lowercase text-xs">[[global:posts]]</span>
+					<span class="d-none d-xl-flex text-lowercase text-xs">{{tx("global:posts")}}</span>
 					<i class="d-xl-none fa-regular fa-fw text-xs text-muted opacity-75 fa-message"></i>
 				</div>
 				<div class="stats-viewcount card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
 					<span class="fs-5 ff-secondary lh-1" title="{./viewcount}">{humanReadableNumber(./viewcount, 0)}</span>
-					<span class="d-none d-xl-flex text-lowercase text-xs">[[global:views]]</span>
+					<span class="d-none d-xl-flex text-lowercase text-xs">{{tx("global:views")}}</span>
 					<i class="d-xl-none fa fa-fw text-xs text-muted opacity-75 fa-eye"></i>
 				</div>
 			</div>

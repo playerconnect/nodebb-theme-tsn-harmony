@@ -9,8 +9,8 @@
 <div class="d-flex align-items-start gap-3">
 	<div class="icon bg-body d-none d-sm-block rounded-circle" style="outline: 2px solid var(--bs-body-bg);">
 		<a class="d-inline-block position-relative text-decoration-none" href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}">
-			{buildAvatar(posts.user, "48px", true, "", "user/picture")}
-			<span component="user/status" class="position-absolute translate-middle-y border border-white border-2 rounded-circle status {posts.user.status}"><span class="visually-hidden">[[global:{posts.user.status}]]</span></span>
+			{{buildAvatar(posts.user, "48px", true, "", "user/picture")}}
+			<span component="user/status" class="position-absolute translate-middle-y border border-white border-2 rounded-circle status {posts.user.status}"><span class="visually-hidden">{{tx("global:{posts.user.status}")}}</span></span>
 		</a>
 	</div>
 
@@ -18,8 +18,8 @@
 		<div class="d-flex align-items-center gap-1 flex-wrap w-100 post-header mt-1" itemprop="author" itemscope itemtype="https://schema.org/Person">
 			<div class="icon bg-body d-sm-none">
 				<a class="d-inline-block position-relative text-decoration-none" href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}">
-					{buildAvatar(posts.user, "20px", true, "", "user/picture")}
-					<span component="user/status" class="position-absolute translate-middle-y border border-white border-2 rounded-circle status {posts.user.status}"><span class="visually-hidden">[[global:{posts.user.status}]]</span></span>
+					{{buildAvatar(posts.user, "20px", true, "", "user/picture")}}
+					<span component="user/status" class="position-absolute translate-middle-y border border-white border-2 rounded-circle status {posts.user.status}"><span class="visually-hidden">{{tx("global:{posts.user.status}")}}</span></span>
 				</a>
 			</div>
 
@@ -34,16 +34,10 @@
 			{{{ end }}}
 
 			<div class="d-flex gap-1 align-items-center">
-				<span class="text-muted">
-					{{{ if posts.toPid }}}
-					{generateRepliedTo(@value, config.timeagoCutoff)}
-					{{{ else }}}
-					{generateWrote(@value, config.timeagoCutoff)}
-					{{{ end }}}
-				</span>
+				<span class="text-muted">{{generateWrote(@value, config.timeagoCutoff)}}</span>
 
-				<i component="post/edit-indicator" class="fa fa-edit text-muted{{{ if privileges.posts:history }}} pointer{{{ end }}} edit-icon {{{ if !posts.editor.username }}}hidden{{{ end }}}" title="[[global:edited-timestamp, {./editedISO}]]"></i>
-				<span data-editor="{posts.editor.userslug}" component="post/editor" class="visually-hidden">[[global:last-edited-by, {posts.editor.username}]] <span class="timeago" title="{posts.editedISO}"></span></span>
+				<i component="post/edit-indicator" class="fa fa-edit text-muted{{{ if privileges.posts:history }}} pointer{{{ end }}} edit-icon {{{ if !posts.editor.username }}}hidden{{{ end }}}" title="{{tx("global:edited-timestamp", ./editedISO)}}"></i>
+				<span data-editor="{posts.editor.userslug}" component="post/editor" class="visually-hidden">{{tx("global:last-edited-by", posts.editor.username)}} <span class="timeago" title="{posts.editedISO}"></span></span>
 			</div>
 
 			<div>
@@ -51,7 +45,7 @@
 					{{{ if posts.user.custom_profile_info.length }}}
 					&#124;
 					{{{ each posts.user.custom_profile_info }}}
-					{posts.user.custom_profile_info.content}
+					{{posts.user.custom_profile_info.content}}
 					{{{ end }}}
 					{{{ end }}}
 				</span>
@@ -63,14 +57,14 @@
 		</div>
 
 		<div class="content mt-2 text-break" component="post/content" itemprop="text">
-			{posts.content}
+			{{{ if posts.txContent }}}{{tx(posts.content)}}{{{ else }}}{{txEscape(posts.content)}}{{{ end }}}
 		</div>
 	</div>
 </div>
 
 <div component="post/footer" class="post-footer border-bottom pb-2">
 	{{{ if posts.user.signature }}}
-	<div component="post/signature" data-uid="{posts.user.uid}" class="text-xs text-muted mt-2">{posts.user.signature}</div>
+	<div component="post/signature" data-uid="{posts.user.uid}" class="text-xs text-muted mt-2">{{posts.user.signature}}</div>
 	{{{ end }}}
 
 	<div class="d-flex">
@@ -78,15 +72,15 @@
 		<a component="post/reply-count" data-target-component="post/replies/container" href="#" class="d-flex gap-2 align-items-center mt-2 btn-outline border rounded-1 p-1 threaded-replies user-select-none text-muted text-decoration-none text-xs {{{ if (!./replies || shouldHideReplyContainer(@value)) }}}hidden{{{ end }}}">
 			<span component="post/reply-count/avatars" class="avatars d-inline-flex gap-1 align-items-top {{{ if posts.replies.hasMore }}}hasMore{{{ end }}}">
 				{{{each posts.replies.users}}}
-				<span>{buildAvatar(posts.replies.users, "20px", true, "avatar-tooltip")}</span>
+				<span>{{buildAvatar(posts.replies.users, "20px", true, "avatar-tooltip")}}</span>
 				{{{end}}}
 				{{{ if posts.replies.hasMore}}}
 				<span><i class="fa fa-ellipsis"></i></span>
 				{{{ end }}}
 			</span>
 
-			<span class="ms-2 replies-count fw-semibold" component="post/reply-count/text" data-replies="{posts.replies.count}">{posts.replies.text}</span>
-			<span class="ms-2 replies-last hidden-xs fw-semibold">[[topic:last-reply-time]] <span class="timeago" title="{posts.replies.timestampISO}"></span></span>
+			<span class="ms-2 replies-count fw-semibold" component="post/reply-count/text" data-replies="{posts.replies.count}">{{tx(posts.replies.text)}}</span>
+			<span class="ms-2 replies-last hidden-xs fw-semibold">{{tx("topic:last-reply-time")}} <span class="timeago" title="{posts.replies.timestampISO}"></span></span>
 
 			<i class="fa fa-fw fa-chevron-down" component="post/replies/open"></i>
 			<i class="fa fa-fw fa-chevron-up hidden" component="post/replies/close"></i>
@@ -99,8 +93,8 @@
 
 	<div component="post/actions" class="d-flex justify-content-end gap-1 post-tools">
 		<!-- IMPORT partials/topic/reactions.tpl -->
-		<a component="post/reply" href="#" class="btn btn-ghost btn-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="[[topic:reply]]"><i class="fa fa-fw fa-reply text-primary"></i></a>
-		<a component="post/quote" href="#" class="btn btn-ghost btn-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="[[topic:quote]]"><i class="fa fa-fw fa-quote-right text-primary"></i></a>
+		<a component="post/reply" href="#" class="btn btn-ghost btn-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="{{tx("topic:reply")}}"><i class="fa fa-fw fa-reply text-primary"></i></a>
+		<a component="post/quote" href="#" class="btn btn-ghost btn-sm user-select-none {{{ if !privileges.topics:reply }}}hidden{{{ end }}}" title="{{tx("topic:quote")}}"><i class="fa fa-fw fa-quote-right text-primary"></i></a>
 
 		{{{ if !reputation:disabled }}}
 		<div class="d-flex votes align-items-stretch">

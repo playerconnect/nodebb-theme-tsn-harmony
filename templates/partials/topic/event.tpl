@@ -3,10 +3,10 @@
 		<i class="fa {{{ if ./icon }}}{./icon}{{{ else }}}fa-circle{{{ end }}} small"></i>
 	</div>
 	<span class="timeline-text small d-flex align-items-center gap-1 flex-wrap">
-		{./text}
+		{{./text}}
 	</span>
 	{{{ if privileges.isAdminOrMod }}}
-	<span component="topic/event/delete" data-topic-event-id="{./id}" data-topic-event-type="{./type}" class="timeline-text pointer" title="[[topic:delete-event]]"><i class="fa fa-trash"></i></span>
+	<span component="topic/event/delete" data-topic-event-id="{./id}" data-topic-event-type="{./type}" class="timeline-text pointer" title="{{tx("topic:delete-event")}}"><i class="fa fa-trash"></i></span>
 	{{{ end }}}
 </li>
 

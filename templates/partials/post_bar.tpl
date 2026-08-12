@@ -5,7 +5,7 @@
 				{{{ if loggedIn }}}
 				<button component="topic/mark-unread" class="btn btn-ghost btn-sm d-flex gap-2 align-items-center">
 					<i class="fa fa-fw fa-inbox text-primary"></i>
-					<span class="d-none d-md-inline fw-semibold">[[topic:mark-unread]]</span>
+					<span class="d-none d-md-inline fw-semibold">{{tx("topic:mark-unread")}}</span>
 				</button>
 				{{{ end }}}
 

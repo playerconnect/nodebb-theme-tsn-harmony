@@ -2,7 +2,7 @@
 
 {{{ if sessions.length }}}
 <div class="mb-3">
-	<h4>[[global:sessions]]</h4>
+	<h5>{{tx("global:sessions")}}</h5>
 	<ul class="list-group" component="user/sessions">
 		<!-- IMPORT partials/account/session-list.tpl -->
 	</ul>
@@ -11,12 +11,20 @@
 
 <div class="row">
 	<div class="col-sm-6 mb-3">
-		<div class="card mb-3">
-			<h5 class="card-header">
-				[[global:recentips]]
-			</h5>
-			<div class="card-body">
-				<ul>
+		{{{ if invitedBy}}}
+		<div class="mb-4 pb-3 border-bottom">
+			<h6>{{tx("user:info.invited-by")}}</h6>
+			<div class="d-flex align-items-center gap-2">
+				<a href="">{{buildAvatar(invitedBy, "24px", true)}}</a>
+				<a href="">{invitedBy.username}</a>
+			</div>
+		</div>
+		{{{ end }}}
+
+		<div class="mb-4 border-bottom">
+			<h6>{{tx("global:recentips")}}</h6>
+			<div class="">
+				<ul class="text-sm text-secondary">
 					{{{each ips}}}
 					<li>{@value}</li>
 					{{{end}}}
@@ -24,170 +32,237 @@
 			</div>
 		</div>
 
-		<div class="card mb-3">
-			<h5 class="card-header">
-				[[user:info.username-history]]
-			</h5>
-			<div class="card-body">
-				<ul class="list-group">
-					{{{each usernames}}}
-					<li class="list-group-item">
-						{../value}
-						<small class="float-end"><span class="timeago" title="{../timestampISO}"></span></small>
+		<div class="mb-4 border-bottom">
+			<h6>{{tx("user:info.username-history")}}</h6>
+			<div class="">
+				<ul class="list-unstyled">
+					{{{ each usernames }}}
+					<li class="d-flex justify-content-between mb-1">
+						<span class="text-sm text-secondary">{./value}</span>
+
+						<div>
+							{{{ if ./byUid }}}
+							<a class="lh-1" href="{{{ if ./byUser.userslug }}}{config.relative_path}/user/{./byUser.userslug}{{{ else }}}#{{{ end }}}">
+							{{buildAvatar(./byUser, "18px", true)}}</a>
+							{{{ end }}}
+							<span class="timeago text-sm text-secondary lh-1 align-middle" title="{./timestampISO}"></span>
+						</div>
 					</li>
-					{{{end}}}
+					{{{ end }}}
 				</ul>
 			</div>
 		</div>
 
-		<div class="card">
-			<h5 class="card-header">
-				[[user:info.email-history]]
-			</h5>
-			<div class="card-body">
-				<ul class="list-group">
-					{{{each emails}}}
-					<li class="list-group-item">
-						{../value}
-						<small class="float-end"><span class="timeago" title="{../timestampISO}"></span></small>
+		<div class="mb-4 border-bottom">
+			<h6>{{tx("user:info.email-history")}}</h6>
+			<div class="">
+				<ul class="list-unstyled">
+					{{{ each emails }}}
+					<li class="d-flex justify-content-between mb-1">
+						<span class="text-sm text-secondary">{./value}</span>
+						<div>
+							{{{ if ./byUid }}}
+							<a class="lh-1" href="{{{ if ./byUser.userslug }}}{config.relative_path}/user/{./byUser.userslug}{{{ else }}}#{{{ end }}}">
+							{{buildAvatar(./byUser, "18px", true)}}</a>
+							{{{ end }}}
+							<span class="timeago text-sm text-secondary lh-1 align-middle" title="{./timestampISO}"></span>
+						</div>
 					</li>
-					{{{end}}}
+					{{{ end }}}
 				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="col-sm-6 mb-3">
-		<div class="card mb-3">
-			<h5 class="card-header">
-				[[user:info.latest-flags]]
-			</h5>
-			<div class="card-body">
+
+			<div class="mb-3 border-bottom">
+			<h6>{{tx("user:info.latest-flags")}}</h6>
+			<div class="">
 				{{{ if history.flags.length }}}
 				<ul class="recent-flags list-unstyled">
 					{{{ each history.flags }}}
-					<li>
-						<p>
+					<li class="mb-4 border-bottom">
+						<div class="mb-1 d-flex align-items-center justify-content-between">
+							<div>
+								{{{ if (./type == "user")}}}
+								<span class="badge text-bg-info">{{tx("user:info.profile")}}</span>
+								{{{ else }}}
+								<span class="badge text-bg-info">{{tx("user:info.post")}}</span>
+								{{{ end }}}
+								<span class="timestamp timeago" title="{./timestampISO}"></span>
+							</div>
+
+							<a href="{config.relative_path}/flags/{./flagId}" class="badge badge border border-gray-300 text-body">{{tx("user:info.view-flag")}}</a>
+						</div>
+
+						{{{ if (./type == "post") }}}
+						<p class="mb-1">
 							{{{ if history.flags.targetPurged }}}
-							<div>[[flags:target-purged]]</div>
+							<div>{{tx("flags:target-purged")}}</div>
 							{{{ else }}}
-							<a class="title" href="{config.relative_path}/post/{./pid}">{./title}</a><br />
+							<a class="title" href="{config.relative_path}/post/{encodeURIComponent(./pid)}">{{tx(./title)}}</a>
 							{{{ end }}}
-							<span class="timestamp">[[flags:flagged-timeago-readable, {./timestampISO}, {./timestampReadable}]]</span>
+						</p>
+						{{{ end }}}
+
+						<div class="d-flex gap-2 align-items-center mb-3">
+							<span class="text-sm">{{tx("user:info.reported-by")}}</span>
+							<div class="d-flex text-nowrap">
+								{{{ each ./reports }}}
+								<a style="width: 18px; z-index: 3;" class="text-decoration-none" href="{config.relative_path}/user/{./reporter.userslug}">{{buildAvatar(./reporter, "24px", true)}}</a>
+								{{{ end }}}
+							</div>
+						</div>
+					</li>
+					{{{ end }}}
+				</ul>
+				{{{ else }}}
+				<div class="alert alert-light">{{tx("user:info.no-flags")}}</div>
+				{{{ end }}}
+			</div>
+		</div>
+
+		<div class="mb-3 border-bottom">
+			<h6 class="d-flex align-items-center justify-content-between">
+				{{tx("user:info.ban-history")}}
+
+				{{{ if (!banned && !isSelf) }}}
+				<button class="btn btn-sm btn-danger" component="account/ban">{{tx("user:ban-account")}}</button>
+				{{{ end }}}
+				{{{ if (banned && !isSelf) }}}
+				<button class="btn btn-sm btn-success" component="account/unban">{{tx("user:unban-account")}}</button>
+				{{{ end }}}
+			</h6>
+			<div class="">
+				{{{ if history.bans.length }}}
+				<ul class="ban-history list-unstyled">
+					{{{ each history.bans }}}
+					<li class="mb-4 border-bottom">
+						<div class="mb-1 d-flex align-items-center justify-content-between">
+							<div>
+								<a href="{config.relative_path}/user/{./user.userslug}">{{buildAvatar(./user, "24px", true)}}</a>
+								<strong>
+									<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}" itemprop="author" data-username="{./user.username}" data-uid="{./user.uid}">{./user.username}</a>
+								</strong>
+								<span class="timestamp timeago" title="{./timestampISO}"></span>
+							</div>
+							{{{ if (./type != "unban") }}}
+							<span class="badge text-bg-danger">[[user:banned]]</span>
+							{{{ else }}}
+							<span class="badge text-bg-success">[[user:unbanned]]</span>
+							{{{ end }}}
+						</div>
+						<p class="mb-1">
+							<span class="reason">[[user:info.banned-reason-label]]: <strong>{{tx(./reason)}}</strong></span>
+						</p>
+						<p>
+							{{{ if ./until }}}
+							<span class="expiry">{{tx("user:info.banned-until", isoTimeToLocaleString(./untilISO, config.userLang))}}</span>
+							{{{ else }}}
+							{{{ if (./type != "unban") }}}
+							<span class="expiry">{{tx("user:info.banned-permanently")}}</span>
+							{{{ end }}}
+							{{{ end }}}
 						</p>
 					</li>
 					{{{ end }}}
 				</ul>
 				{{{ else }}}
-				<div class="alert alert-success">[[user:info.no-flags]]</div>
+				<div class="alert alert-light">{{tx("user:info.no-ban-history")}}</div>
 				{{{ end }}}
 			</div>
 		</div>
 
-		<div class="card mb-3">
-			<h5 class="card-header">
-				[[user:info.ban-history]]
-
-				{{{ if (!banned && !isSelf) }}}
-				<button class="btn btn-sm float-end btn-danger" component="account/ban">[[user:ban-account]]</button>
-				{{{ end }}}
-				{{{ if (banned && !isSelf) }}}
-				<button class="btn btn-sm float-end btn-success" component="account/unban">[[user:unban-account]]</button>
-				{{{ end }}}
-			</h5>
-			<div class="card-body">
-				{{{ if history.bans.length }}}
-				<ul class="ban-history list-unstyled">
-					{{{each history.bans}}}
-					<li>
-						<p>
-							<a href="{config.relative_path}/user/{./user.userslug}">{buildAvatar(./user, "24px", true)}</a>
-							<strong>
-								<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}" itemprop="author" data-username="{./user.username}" data-uid="{./user.uid}">{./user.username}</a>
-							</strong>
-							<span class="timestamp timeago" title="{./timestampISO}"></span> &mdash; {./timestampReadable}<br />
-							{{{ if ./until }}}
-							<span class="expiry">[[user:info.banned-until, {./untilReadable}]]</span><br />
-							{{{ else }}}
-							<span class="expiry">[[user:info.banned-permanently]]</span><br />
-							{{{ end }}}
-							<span class="reason"><strong>[[user:info.banned-reason-label]]</strong>: {./reason}</span>
-						</p>
-					</li>
-					{{{end}}}
-				</ul>
-				{{{ else }}}
-				<div class="alert alert-success">[[user:info.no-ban-history]]</div>
-				{{{ end }}}
-			</div>
-		</div>
-
-		<div class="card mb-3">
-			<h5 class="card-header">
-				[[user:info.mute-history]]
+		<div class="mb-3">
+			<h6 class="d-flex align-items-center justify-content-between">
+				{{tx("user:info.mute-history")}}
 
 				{{{ if !muted }}}
 				{{{ if !isSelf }}}
-				<button class="btn btn-sm float-end btn-danger" component="account/mute">[[user:mute-account]]</button>
+				<button class="btn btn-sm btn-danger" component="account/mute">{{tx("user:mute-account")}}</button>
 				{{{ end }}}
 				{{{ else }}}
 				{{{ if !isSelf }}}
-				<button class="btn btn-sm float-end btn-success" component="account/unmute">[[user:unmute-account]]</button>
+				<button class="btn btn-sm btn-success" component="account/unmute">{{tx("user:unmute-account")}}</button>
 				{{{ end }}}
 				{{{ end }}}
-			</h5>
-			<div class="card-body">
+			</h6>
+			<div class="">
 				{{{ if history.mutes.length }}}
 				<ul class="ban-history list-unstyled">
 					{{{ each history.mutes }}}
-					<li>
-						<p>
-							<a href="{config.relative_path}/user/{./user.userslug}">{buildAvatar(./user, "24px", true)}</a>
-							<strong>
-								<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}" itemprop="author" data-username="{./user.username}" data-uid="{./user.uid}">{./user.username}</a>
-							</strong>
-							<span class="timestamp timeago" title="{./timestampISO}"></span> &mdash; {./timestampReadable}<br />
-							{{{ if ./until }}}
-							<span class="expiry">[[user:info.muted-until, {./untilReadable}]]</span><br />
+					<li class="mb-4 border-bottom">
+						<div class="mb-1 d-flex align-items-center justify-content-between">
+							<div>
+								<a href="{config.relative_path}/user/{./user.userslug}">{{buildAvatar(./user, "24px", true)}}</a>
+								<strong>
+									<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}" itemprop="author" data-username="{./user.username}" data-uid="{./user.uid}">{./user.username}</a>
+								</strong>
+								<span class="timestamp timeago" title="{./timestampISO}"></span>
+							</div>
+							{{{ if (./type != "unmute") }}}
+							<span class="badge text-bg-danger">{{tx("user:muted")}}</span>
+							{{{ else }}}
+							<span class="badge text-bg-success">{{tx("user:unmuted")}}</span>
 							{{{ end }}}
-
-							<span class="reason"><strong>[[user:info.banned-reason-label]]</strong>: {./reason}</span>
+						</div>
+						<p class="mb-1">
+							<span class="reason">{{tx("user:info.banned-reason-label")}}: <strong>{{tx(./reason)}}</strong></span>
+						</p>
+						<p>
+							{{{ if ./until }}}
+							<span class="expiry">{{tx("user:info.muted-until", isoTimeToLocaleString(./untilISO, config.userLang))}}</span>
+							{{{ end }}}
 						</p>
 					</li>
 					{{{ end }}}
 				</ul>
 				{{{ else }}}
-				<div class="alert alert-success">[[user:info.no-mute-history]]</div>
+				<div class="alert alert-light">{{tx("user:info.no-mute-history")}}</div>
 				{{{ end }}}
 			</div>
 		</div>
 
-		{{{ if isAdminOrGlobalModerator }}}
+	</div>
+
+	<div class="col-sm-6 mb-3">
+		{{{ if isAdminOrGlobalModeratorOrModerator }}}
 		<div class="card">
 			<h5 class="card-header">
-				[[user:info.moderation-note]]
+				{{tx("user:info.moderation-note")}}
 			</h5>
 			<div class="card-body">
-				<textarea component="account/moderation-note" class="form-control"></textarea>
-				<br/>
-				<button class="btn btn-sm float-end btn-success" component="account/save-moderation-note">[[user:info.moderation-note.add]]</button>
+				<textarea component="account/moderation-note" class="form-control mb-3" aria-label="{{tx("user:info.moderation-note")}}"></textarea>
+
+				<button class="btn btn-sm float-end btn-success" component="account/save-moderation-note">{{tx("user:info.moderation-note.add")}}</button>
 				<br/>
 				<div component="account/moderation-note/list">
 					{{{ each moderationNotes }}}
-					<hr/>
+					<div data-id="{./id}" class="border-bottom pb-3 mb-3">
+						<div class="d-flex align-items-baseline gap-2 mb-1">
+							<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}">{{buildAvatar(./user, "24px", true)}}</a>
 
-					<div>
-						<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}">{buildAvatar(./user, "24px", true)}</a>
-						<strong>
-							<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}" itemprop="author" data-username="{./user.username}" data-uid="{./user.uid}">{./user.username}</a>
-						</strong>
+							<a href="{{{ if ./user.userslug }}}{config.relative_path}/user/{./user.userslug}{{{ else }}}#{{{ end }}}" class="fw-bold" itemprop="author" data-username="{./user.username}" data-uid="{./user.uid}">{./user.username}</a>
 
-						<div class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
-							<span class="timeago" title="{./timestampISO}"></span>
+							<span class="timeago text-sm text-secondary" title="{./timestampISO}"></span>
 						</div>
-						<br />
 
-						<div class="content">
-							{./note}
+						<div component="account/moderation-note/content-area" class="d-flex flex-column">
+							<div class="content text-secondary">
+								{{txEscape(./note)}}
+							</div>
+							{{{ if isAdmin }}}
+							<div class="d-flex gap-1 justify-content-end">
+								<button component="account/moderation-note/delete" class="btn btn-sm btn-link text-danger align-self-end">{{tx("topic:delete")}}</button>
+								<button component="account/moderation-note/edit" class="btn btn-sm btn-link align-self-end">{{tx("topic:edit")}}</button>
+							</div>
+							{{{ end }}}
+						</div>
+
+						<div component="account/moderation-note/edit-area" class="d-flex flex-column gap-2 hidden">
+							<textarea class="form-control form-control-sm w-100 overflow-hidden">{./rawNote}</textarea>
+							<div class="align-self-end">
+								<button component="account/moderation-note/cancel-edit" class="btn btn-sm btn-link text-danger align-self-end">{{tx("global:cancel")}}</button>
+								<button component="account/moderation-note/save-edit" class="btn btn-sm btn-primary align-self-end">{{tx("global:save")}}</button>
+							</div>
 						</div>
 					</div>
 					{{{ end }}}

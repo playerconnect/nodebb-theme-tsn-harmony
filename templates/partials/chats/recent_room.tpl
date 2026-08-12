@@ -8,11 +8,11 @@
 				{{{ if ./users.length }}}
 				{{{ if ./groupChat}}}
 				<div class="position-relative stacked-avatars">
-					<span class="text-decoration-none position-absolute" href="{config.relative_path}/user/{./users.1.userslug}">{buildAvatar(./users.1, "24px", true)}</span>
-					<span class="text-decoration-none position-absolute" href="{config.relative_path}/user/{./users.0.userslug}" >{buildAvatar(./users.0, "24px", true)}</span>
+					<span class="text-decoration-none position-absolute" href="{config.relative_path}/user/{./users.1.userslug}">{{buildAvatar(./users.1, "24px", true)}}</span>
+					<span class="text-decoration-none position-absolute" href="{config.relative_path}/user/{./users.0.userslug}" >{{buildAvatar(./users.0, "24px", true)}}</span>
 				</div>
 				{{{ else }}}
-				<span href="{config.relative_path}/user/{./users.0.userslug}" class="text-decoration-none">{buildAvatar(./users.0, "32px", true)}</span>
+				<span href="{config.relative_path}/user/{./users.0.userslug}" class="text-decoration-none">{{buildAvatar(./users.0, "32px", true)}}</span>
 				{{{ end }}}
 				{{{ else }}}
 				<span class="avatar avatar-rounded text-bg-warning" component="avatar/icon" style="--avatar-size: 32px;">?</span>
@@ -25,7 +25,7 @@
 				{./roomName}
 				{{{ else }}}
 					{{{ if !./lastUser.uid }}}
-					[[modules:chat.no-users-in-room]]
+					{{tx("modules:chat.no-users-in-room")}}
 					{{{ else }}}
 					{./usernames}
 					{{{ end  }}}
@@ -34,9 +34,9 @@
 
 				{{{ if ./teaser }}}
 				<div class="teaser-content text-sm line-clamp-3 text-break">
-					{buildAvatar(./teaser.user, "14px", true, "align-middle")}
+					{{buildAvatar(./teaser.user, "14px", true, "align-middle")}}
 					<strong class="text-xs fw-semibold teaser-username">{./teaser.user.username}:</strong>
-					{./teaser.content}
+					{{txEscape(./teaser.content)}}
 				</div>
 				<div class="teaser-timestamp text-muted text-xs">{{{ if ./teaser.timeagoLong }}}{./teaser.timeagoLong}{{{ else }}}<span class="timeago" title="{./teaser.timestampISO}"></span>{{{ end }}}</div>
 				{{{ end }}}
@@ -44,8 +44,8 @@
 		</div>
 		<div>
 			<button class="mark-read btn btn-ghost btn-sm" style="width: 1.5rem; height: 1.5rem;">
-				<i class="unread fa fa-2xs fa-circle text-primary {{{ if !./unread }}}hidden{{{ end }}}" aria-label="[[unread:mark-as-read]]"></i>
-				<i class="read fa fa-2xs fa-circle-o text-secondary {{{ if ./unread }}}hidden{{{ end }}}" aria-label="[[unread:mark-as-unread]]"></i>
+				<i class="unread fa fa-2xs fa-circle text-primary {{{ if !./unread }}}hidden{{{ end }}}" aria-label="{{tx("unread:mark-as-read")}}"></i>
+				<i class="read fa fa-2xs fa-circle-o text-secondary {{{ if ./unread }}}hidden{{{ end }}}" aria-label="{{tx("unread:mark-as-unread")}}"></i>
 			</button>
 		</div>
 	</div>

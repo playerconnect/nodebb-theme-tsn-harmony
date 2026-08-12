@@ -1,9 +1,9 @@
 <li component="categories/category" data-cid="{./cid}" class="w-100 border-bottom py-3 py-lg-3 gap-lg-0 gap-2 d-flex flex-column flex-lg-row align-items-start category-{./cid} {./unread-class}">
-	<meta itemprop="name" content="{./name}">
+	<meta itemprop="name" content="{{tx(./name)}}">
 
 	<div class="d-flex col-lg-7 gap-2 gap-lg-3">
 		<div class="flex-shrink-0">
-		{buildCategoryIcon(@value, "40px", "rounded-1")}
+		{{buildCategoryIcon(@value, "40px", "rounded-1")}}
 		</div>
 		<div class="flex-grow-1 d-flex flex-wrap gap-1">
 			<h2 class="title text-break fs-4 fw-semibold m-0 tracking-tight w-100">
@@ -11,7 +11,7 @@
 			</h2>
 			{{{ if ./descriptionParsed }}}
 			<div class="description text-muted text-sm w-100">
-				{./descriptionParsed}
+				{{./descriptionParsed}}
 			</div>
 			{{{ end }}}
 			{{{ if !config.hideSubCategories }}}
@@ -23,12 +23,12 @@
 					{{{ if ./link }}}
 					<div class="d-flex align-items-start gap-1">
 						<i class="fa fa-fw fa-caret-right text-primary mt-1"></i>
-						<a href="{./link}" class="text-reset fw-semibold">{./name}</a>
+						<a href="{./link}" class="text-reset fw-semibold">{{tx(./name)}}</a>
 					</div>
 					{{{ else }}}
 					<div class="d-flex align-items-start gap-1">
 						<i class="fa fa-fw fa-caret-right text-primary mt-1"></i>
-						<a href="{config.relative_path}/category/{./slug}" class="text-reset fw-semibold">{./name}</a>
+						<a href="{config.relative_path}/category/{./slug}" class="text-reset fw-semibold">{{tx(./name)}}</a>
 					</div>
 					{{{ end }}}
 				</span>
@@ -44,12 +44,12 @@
 			<div class="meta stats d-none d-lg-grid col-6 gap-1 pe-2 text-muted" style="grid-template-columns: 1fr 1fr;">
 				<div class="card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
 					<span class="fs-5 ff-secondary lh-1" title="{./totalTopicCount}">{humanReadableNumber(./totalTopicCount, 0)}</span>
-					<span class="d-none d-xl-flex text-lowercase text-xs">[[global:topics]]</span>
+					<span class="d-none d-xl-flex text-lowercase text-xs">{{tx("global:topics")}}</span>
 					<i class="d-xl-none fa fa-fw text-xs text-muted opacity-75 fa-list"></i>
 				</div>
 				<div class="card card-header border-0 p-2 overflow-hidden rounded-1 d-flex flex-column align-items-center">
 					<span class="fs-5 ff-secondary lh-1" title="{./totalPostCount}">{humanReadableNumber(./totalPostCount, 0)}</span>
-					<span class="d-none d-xl-flex text-lowercase text-xs">[[global:posts]]</span>
+					<span class="d-none d-xl-flex text-lowercase text-xs">{{tx("global:posts")}}</span>
 					<i class="d-xl-none fa fa-fw text-xs text-muted opacity-75 fa-message"></i>
 				</div>
 			</div>

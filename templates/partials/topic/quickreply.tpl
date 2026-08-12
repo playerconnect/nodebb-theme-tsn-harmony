@@ -2,7 +2,7 @@
 <div component="topic/quickreply/container" class="quick-reply d-flex gap-3 mb-4">
 	<div class="icon hidden-xs">
 		<a class="d-inline-block position-relative" href="{{{ if loggedInUser.userslug }}}{config.relative_path}/user/{loggedInUser.userslug}{{{ else }}}#{{{ end }}}">
-			{buildAvatar(loggedInUser, "48px", true, "", "user/picture")}
+			{{buildAvatar(loggedInUser, "48px", true, "", "user/picture")}}
 			{{{ if loggedInUser.status }}}<span component="user/status" class="position-absolute translate-middle-y border border-white border-2 rounded-circle status {loggedInUser.status}"><span class="visually-hidden">[[global:{loggedInUser.status}]]</span></span>{{{ end }}}
 		</a>
 	</div>
@@ -10,13 +10,13 @@
 		<input type="hidden" name="tid" value="{tid}" />
 		<input type="hidden" name="_csrf" value="{config.csrf_token}" />
 		<div class="quickreply-message position-relative">
-			<textarea rows="4" name="content" component="topic/quickreply/text" class="form-control mousetrap" placeholder="[[modules:composer.textarea.placeholder]]"></textarea>
-			<div class="imagedrop"><div>[[topic:composer.drag-and-drop-images]]</div></div>
+			<textarea rows="4" name="content" component="topic/quickreply/text" class="form-control mousetrap" placeholder="{{tx("modules:composer.textarea.placeholder")}}"></textarea>
+			<div class="imagedrop"><div>{{tx("topic:composer.drag-and-drop-images")}}</div></div>
 		</div>
 		<div>
 			<div class="d-flex justify-content-end gap-2">
 				<button type="submit" component="topic/quickreply/expand" class="btn btn-sm btn-outline" formmethod="get"><i class="fa fa-expand"></i></button>
-				<button type="submit" component="topic/quickreply/button" class="btn btn-sm btn-primary">[[topic:post-quick-reply]]</button>
+				<button type="submit" component="topic/quickreply/button" class="btn btn-sm btn-primary">{{tx("topic:post-quick-reply")}}</button>
 			</div>
 		</div>
 	</form>

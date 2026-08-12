@@ -1,7 +1,7 @@
 {{{ if !notifications.length }}}
 <div class="no-notifs text-center p-4 d-flex flex-column">
 	<div class="p-4"><i class="fa-solid fa-wind fs-2 text-muted"></i></div>
-	<div class="text-xs fw-semibold text-muted">[[notifications:no-notifs]]</div>
+	<div class="text-xs fw-semibold text-muted">{{tx("notifications:no-notifs")}}</div>
 </div>
 {{{ end }}}
 
@@ -23,7 +23,7 @@
 
 			<div class="d-flex flex-grow-1 flex-column align-items-start position-relative">
 				<a href="{./path}" class="text-decoration-none d-inline-block text-reset text-break text-sm ff-sans stretched-link" component="notifications/item/link">
-					{./bodyShort}
+					{{./bodyShort}}
 				</a>
 				<div class="text-xs text-muted">{{{ if ./timeagoLong }}}{./timeagoLong}{{{ else }}}<span class="timeago" title="{./datetimeISO}"></span>{{{ end }}}</div>
 			</div>

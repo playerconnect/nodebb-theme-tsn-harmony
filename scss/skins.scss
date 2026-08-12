@@ -942,6 +942,10 @@
   }
   .card-body {
     --bs-card-color: #000;
+    .btn-outline-secondary {
+      --bs-btn-color: #000;
+      --bs-btn-border-color: #000;
+    }
   }
   .card-header {
     --bs-card-cap-color: #fff;

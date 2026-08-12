@@ -13,7 +13,7 @@
 			<ul class="navigation-dropdown dropdown-menu">
 				{{{ each navigation }}}
 				{{{ if displayMenuItem(@root, @index) }}}
-				<li class="nav-item {./class}{{{ if ./dropdown }}} dropend{{{ end }}}" title="{./title}">
+				<li class="nav-item {./class}{{{ if ./dropdown }}} dropend{{{ end }}}" title="{{tx(./title)}}">
 					<a class="nav-link nav-btn navigation-link px-3 py-2 {{{ if ./dropdown }}}dropdown-toggle{{{ end }}}"
 					{{{ if ./dropdown }}} href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapse-target-{@index}" onclick="event.stopPropagation();" {{{ else }}} href="{./route}"{{{ end }}} {{{ if ./id }}}id="{./id}"{{{ end }}}{{{ if ./targetBlank }}} target="_blank"{{{ end }}}>
 						<span class="d-inline-flex justify-content-between align-items-center w-100">
@@ -22,7 +22,7 @@
 								<i class="fa fa-fw {./iconClass}" data-content="{./content}"></i>
 								{{{ end }}}
 								{{{ if ./text }}}
-								<span class="nav-text px-2 fw-semibold">{./text}</span>
+								<span class="nav-text px-2 fw-semibold">{{tx(./text)}}</span>
 								{{{ end }}}
 							</span>
 							<span component="navigation/count" class="badge rounded-1 bg-primary {{{ if !./content }}}hidden{{{ end }}}">{./content}</span>

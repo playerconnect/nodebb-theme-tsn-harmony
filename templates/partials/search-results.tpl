@@ -1,8 +1,8 @@
 {{{ if matchCount }}}
-<div class="card card-header text-xs px-2 py-1 fw-semibold border-0 align-self-start">[[search:results-matching, {matchCount}, {search_query}, {time}]] </div>
+<div class="card card-header text-xs px-2 py-1 fw-semibold border-0 align-self-start">{{tx("search:results-matching", matchCount, txEscape(search_query), time)}} </div>
 {{{ else }}}
 {{{ if search_query }}}
-<div class="badge text-bg-warning align-self-start">[[search:no-matches]]</div>
+<div class="badge text-bg-warning align-self-start">{{tx("search:no-matches")}}</div>
 {{{ end }}}
 {{{ end }}}
 
@@ -23,7 +23,7 @@
 		<div class="post-body d-flex flex-column gap-1">
 			<div class="d-flex gap-3 post-info">
 				<div class="post-author d-flex gap-1">
-					<a class="lh-1 text-decoration-none" href="{config.relative_path}/user/{./user.userslug}">{buildAvatar(./user, "16px", true, "not-responsive")}</a>
+					<a class="lh-1 text-decoration-none" href="{config.relative_path}/user/{./user.userslug}">{{buildAvatar(./user, "16px", true, "not-responsive")}}</a>
 					<a class="fw-semibold text-sm" href="{config.relative_path}/user/{./user.userslug}">{../user.displayname}</a>
 				</div>
 				<span class="timeago text-sm text-muted" title="{./timestampISO}"></span>

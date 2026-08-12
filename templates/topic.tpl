@@ -7,33 +7,37 @@
 {{{ end }}}
 
 <div class="d-flex flex-column gap-3" itemid="{url}" itemscope itemtype="https://schema.org/DiscussionForumPosting">
+	<!-- IMPORT partials/topic/meta-tags.tpl -->
+	
 	<div class="d-flex flex-wrap">
 		<div class="d-flex flex-column gap-3 flex-grow-1">
 			<h2 component="post/header" class="tracking-tight fw-semibold fs-3 mb-0 text-break {{{ if config.theme.centerHeaderElements }}}text-center{{{ end }}}" itemprop="headline">
-				<span class="topic-title" component="topic/title">{title}</span>
+				<span class="topic-title" component="topic/title">{{tx(title)}}</span>
 			</h2>
 
 			<div class="topic-info d-flex gap-2 align-items-center flex-wrap {{{ if config.theme.centerHeaderElements }}}justify-content-center{{{ end }}}">
 				<span component="topic/labels" class="d-flex gap-2 {{{ if (!scheduled && (!pinned && (!locked && (!oldCid && !icons.length)))) }}}hidden{{{ end }}}">
 					<span component="topic/scheduled" class="badge badge border border-gray-300 text-body {{{ if !scheduled }}}hidden{{{ end }}}">
 						<i class="fa fa-clock-o"></i>
-						[[topic:scheduled]]
+						{{tx("topic:scheduled")}}
 					</span>
 					<span component="topic/pinned" class="badge badge border border-gray-300 text-body {{{ if (scheduled || !pinned) }}}hidden{{{ end }}}">
 						<i class="fa fa-thumb-tack"></i>
-						{{{ if !pinExpiry }}}[[topic:pinned]]{{{ else }}}[[topic:pinned-with-expiry, {isoTimeToLocaleString(./pinExpiryISO)}]]{{{ end }}}
+						{{{ if !pinExpiry }}}{{tx("topic:pinned")}}{{{ else }}}{{tx("topic:pinned-with-expiry", isoTimeToLocaleString(./pinExpiryISO))}}{{{ end }}}
 					</span>
 					<span component="topic/locked" class="badge badge border border-gray-300 text-body {{{ if !locked }}}hidden{{{ end }}}">
 						<i class="fa fa-lock"></i>
-						[[topic:locked]]
+						{{tx("topic:locked")}}
 					</span>
 					<a href="{config.relative_path}/category/{oldCid}" class="badge badge border border-gray-300 text-body text-decoration-none {{{ if !oldCid }}}hidden{{{ end }}}">
 						<i class="fa fa-arrow-circle-right"></i>
-						{{{ if privileges.isAdminOrMod }}}[[topic:moved-from, {oldCategory.name}]]{{{ else }}}[[topic:moved]]{{{ end }}}
+						{{{ if privileges.isAdminOrMod }}}{{tx("topic:moved-from", oldCategory.name)}}{{{ else }}}{{tx("topic:moved")}}{{{ end }}}
 					</a>
-					{{{each icons}}}<span class="lh-1">{@value}</span>{{{end}}}
+					{{{ each ./icons }}}
+					<!-- IMPORT partials/topic/icon.tpl -->
+					{{{ end }}}
 				</span>
-				<a class="lh-1" href="{config.relative_path}/category/{category.slug}">{function.buildCategoryLabel, category, "border"}</a>
+				<a class="lh-1" href="{config.relative_path}/category/{category.slug}">{{function.buildCategoryLabel, category, "border"}}</a>
 				<div data-tid="{./tid}" component="topic/tags" class="lh-1 tags tag-list d-flex flex-wrap hidden-xs hidden-empty gap-2"><!-- IMPORT partials/topic/tags.tpl --></div>
 				<div class="d-flex hidden-xs gap-2">
 					<!-- IMPORT partials/topic/stats.tpl -->

@@ -1,6 +1,6 @@
-<a component="search/button" id="search-button" href="#" role="button" class="nav-link nav-btn text-truncate" data-bs-toggle="dropdown" title="[[global:header.search]]">
+<a component="search/button" id="search-button" href="#" role="button" class="nav-link nav-btn text-truncate" data-bs-toggle="dropdown" title="{{tx("global:header.search")}}">
 	<i class="fa fa-search fa-fw"></i>
-	<span class="nav-text visible-open px-2 fw-semibold">[[global:search]]</span>
+	<span class="nav-text visible-open px-2 fw-semibold">{{tx("global:search")}}</span>
 </a>
 <div class="search-dropdown dropdown-menu p-2 shadow">
 	<form component="search/form" id="search-form" class="d-flex justify-content-end align-items-center" role="search" method="GET">
@@ -16,14 +16,14 @@
 			</div>
 
 			<div class="d-flex gap-1 input-container">
-				<input autocomplete="off" type="text" class="form-control" placeholder="[[global:search]]" name="query" value="">
+				<input autocomplete="off" type="text" class="form-control" placeholder="{{tx("global:search")}}" name="query" value="">
 
 				<div class="nav-btn d-flex justify-content-center align-items-center advanced-search-link">
 					<i class="fa fa-gears fa-fw text-muted"></i>
 				</div>
 			</div>
 
-			<button type="submit" class="btn btn-outline-secondary hide">[[global:search]]</button>
+			<button type="submit" class="btn btn-outline-secondary hide">{{tx("global:search")}}</button>
 		</div>
 	</form>
 </div>

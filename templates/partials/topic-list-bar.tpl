@@ -27,18 +27,18 @@
 				<!-- IMPORT partials/category/tools-dropdown-left.tpl -->
 
 				{{{ if (!feeds:disableRSS && rssFeedUrl) }}}
-				<a class="btn btn-ghost btn-sm d-none d-lg-flex align-items-center align-self-stretch" target="_blank" href="{rssFeedUrl}" itemprop="item" title="[[global:rss-feed]]"><i class="fa fa-rss text-primary"></i></a>
+				<a class="btn btn-ghost btn-sm d-none d-lg-flex align-items-center align-self-stretch" target="_blank" href="{rssFeedUrl}" itemprop="item" title="{{tx("global:rss-feed")}}"><i class="fa fa-rss text-primary"></i></a>
 				{{{ end }}}
 
 				<a href="{{{ if template.category }}}{url}{{{ else }}}{config.relative_path}/{selectedFilter.url}{querystring}{{{ end }}}" class="btn btn-secondary fw-semibold position-absolute top-100 translate-middle-x start-50 mt-1 hide" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" id="new-topics-alert">
-					<i class="fa fa-fw fa-arrow-up"></i> [[recent:load-new-posts]]
+					<i class="fa fa-fw fa-arrow-up"></i> {{tx("recent:load-new-posts")}}
 				</a>
 			</div>
 
 			<div class="d-flex gap-1 align-items-center">
 				{{{ if template.category }}}
 					{{{ if privileges.topics:create }}}
-					<a href="{config.relative_path}/compose?cid={cid}" component="category/post" id="new_topic" class="btn btn-primary btn-sm text-nowrap" data-ajaxify="false" role="button">[[category:new-topic-button]]</a>
+					<a href="{config.relative_path}/compose?cid={cid}" component="category/post" id="new_topic" class="btn btn-primary btn-sm text-nowrap" data-ajaxify="false" role="button">{{tx("category:new-topic-button")}}</a>
 					{{{ end }}}
 				{{{ else }}}
 					{{{ if canPost }}}
@@ -47,7 +47,7 @@
 				{{{ end }}}
 				<!-- only show login button if not logged in and doesn't have any posting privilege -->
 				{{{ if (!loggedIn && (!privileges.topics:create && !canPost))}}}
-				<a component="category/post/guest" href="{config.relative_path}/login" class="btn btn-sm btn-primary">[[category:guest-login-post]]</a>
+				<a component="category/post/guest" href="{config.relative_path}/login" class="btn btn-sm btn-primary">{{tx("category:guest-login-post")}}</a>
 				{{{ end }}}
 			</div>
 		</div>

@@ -1,20 +1,19 @@
-<div class="notifications">
-	<div class="btn-toolbar justify-content-end" role="toolbar">
-		<button class="btn btn-sm btn-light" component="notifications/mark_all">[[notifications:mark-all-read]]</button>
-	</div>
-
-	<hr class="text-muted opacity-25"/>
-
+<div class="notifications flex-fill">
 	<div class="d-flex flex-column flex-md-row">
-		<div class="flex-shrink-0 pe-2 border-end-md text-sm mb-3 flex-basis-md-200">
+		<div class="d-flex flex-column flex-shrink-0 pe-2 border-end-md text-sm mb-3 flex-basis-md-200 gap-2">
+
+			<button class="btn btn-sm btn-primary w-100" component="notifications/mark_all"><i class="fa fa-check-double"></i> {{tx("notifications:mark-all-read")}}</button>
+
 			<div class="nav sticky-top d-flex flex-row flex-md-column flex-wrap gap-1" style="z-index: 1;">
 				{{{ each filters }}}
 				{{{ if ./separator }}}
 				<hr/>
 				{{{ else }}}
-				<a class="btn-ghost fw-semibold {{{ if ./selected }}}active{{{ end }}}" href="{config.relative_path}/notifications?filter={./filter}">
-					<div class="flex-grow-1">{filters.name}</div>
+				<a class="btn btn-ghost d-flex gap-2 text-start align-items-baseline text-sm ff-secondary fw-semibold {{{ if ./selected }}}active{{{ end }}}" href="{config.relative_path}/notifications?filter={./filter}">
+					<div class="flex-grow-1">{{tx(filters.name)}}</div>
+					{{{ if ./filter }}}
 					<span class="flex-shrink-0 text-xs" title="{./count}">{humanReadableNumber(./count)}</span>
+					{{{ end }}}
 				</a>
 				{{{ end }}}
 				{{{ end }}}
@@ -28,3 +27,5 @@
 		</div>
 	</div>
 </div>
+
+

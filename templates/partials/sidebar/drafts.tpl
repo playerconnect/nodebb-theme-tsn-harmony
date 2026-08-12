@@ -4,7 +4,7 @@
 			<i component="drafts/icon" class="fa fa-fw fa-pen-to-square unread-count"></i>
 			<span component="drafts/count" class="visible-closed position-absolute top-0 start-100 translate-middle badge rounded-1 bg-primary hidden">0</span>
 		</span>
-		<span class="nav-text small visible-open fw-semibold">[[global:header.drafts]]</span>
+		<span class="nav-text small visible-open fw-semibold">{{tx("global:header.drafts")}}</span>
 	</span>
 	<span component="drafts/count" class="visible-open badge rounded-1 bg-primary hidden">0</span>
 </a>
@@ -20,7 +20,7 @@
 			</div>
 			<div class="hidden no-drafts text-center p-4 d-flex flex-column">
 				<div class="p-4"><i class="fa-solid fa-wind fs-2 text-muted"></i></div>
-				<div class="text-xs fw-semibold text-muted">[[modules:composer.no-drafts]]</div>
+				<div class="text-xs fw-semibold text-muted">{{tx("modules:composer.no-drafts")}}</div>
 			</div>
 			<div class="draft-item-container">
 				{{{ each drafts }}}
@@ -32,20 +32,20 @@
 						<div class="dropdown-item rounded-1 p-2 d-flex flex-column gap-2 pointer" component="drafts/open" data-save-id="{./save_id}">
 							{{{ if (./action == "topics.post") }}}
 							{{{ if ./title}}}
-							<div class="text text-xs fw-semibold line-clamp-2 text-break">{./title}</div>
+							<div class="text text-xs fw-semibold line-clamp-2 text-break">{{tx(./title)}}</div>
 							{{{ end }}}
 							{{{ end }}}
 
 							{{{ if (./action == "posts.reply") }}}
-							<div class="text text-xs fw-semibold line-clamp-2 text-break">[[topic:composer.replying-to, "{./title}"]]</div>
+							<div class="text text-xs fw-semibold line-clamp-2 text-break">{{tx("topic:composer.replying-to", txEscape(quote(./title)))}}</div>
 							{{{ end }}}
 
 							{{{ if (./action == "posts.edit") }}}
-							<div class="text text-xs fw-semibold line-clamp-2">[[topic:composer.editing-in, "{./title}"]]</div>
+							<div class="text text-xs fw-semibold line-clamp-2">{{tx("topic:composer.editing-in", txEscape(quote(./title)))}}</div>
 							{{{ end }}}
 
 							{{{ if ./text }}}
-							<div class="text text-sm line-clamp-3 text-break">{./text}</div>
+							<div class="text text-sm line-clamp-3 text-break">{{tx(./text)}}</div>
 							{{{ end }}}
 							<div class="timeago text-xs text-muted" title="{./timestampISO}"></div>
 						</div>
