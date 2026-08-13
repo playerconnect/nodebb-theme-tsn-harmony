@@ -30,7 +30,7 @@
 	{{{ if !singlePost }}}
 	<div class="alert alert-info">
 		{{tx("post-queue:no-queued-posts")}}
-		{{{ if !enabled }}}<p>{{tx("post-queue:enabling-help", {config.relative_path}/admin/settings/post#post-queue)}}</p>{{{ end }}}
+		{{{ if !enabled }}}<p>{{tx("post-queue:enabling-help", "{config.relative_path}/admin/settings/post#post-queue")}}</p>{{{ end }}}
 	</div>
 	{{{ else }}}
 	<div class="alert alert-info d-flex align-items-md-center d-flex flex-column flex-md-row">
