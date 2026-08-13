@@ -7,14 +7,13 @@
 <div class="row">
 	<div class="col-12 col-md-6">
 		{{{ if !disableCustomUserSkins }}}
-		<h6 class="fw-bold">{{tx("user:select-skin")}}</h6>
-		<div class="">
-			<select class="form-select form-select-sm" id="bootswatchSkin" data-property="bootswatchSkin">
-				{{{each bootswatchSkinOptions}}}
-				<option value="{bootswatchSkinOptions.value}" {{{ if bootswatchSkinOptions.selected }}}selected{{{ end }}}>{{bootswatchSkinOptions.name}}</option>
-				{{{end}}}
-			</select>
-		</div>
+		<label for="bootswatchSkin" class="form-label fw-bold">{{tx("user:select-skin")}}</label>
+		<select class="form-select form-select-sm" id="bootswatchSkin" data-property="bootswatchSkin">
+			{{{each bootswatchSkinOptions}}}
+			<option value="{bootswatchSkinOptions.value}" {{{ if bootswatchSkinOptions.selected }}}selected{{{ end }}}>{{tx(bootswatchSkinOptions.name)}}</option>
+			{{{end}}}
+		</select>
+
 		<hr/>
 		{{{ end }}}
 
@@ -203,7 +202,7 @@
 			{{{each notificationSettings}}}
 			<div class="row mb-3">
 				<div class="col-7">
-					<label class="text-sm">{{./label}}</label>
+					<label class="text-sm">{{tx(./label)}}</label>
 				</div>
 				<div class="mb-2 col-5">
 					<select class="form-select form-select-sm" data-property="{{tx(./name)}}">
@@ -224,7 +223,7 @@
 					<select class="form-select form-select-sm" id="upvote-notif-freq" name="upvote-notif-freq" data-property="upvoteNotifFreq">
 						{{{ each upvoteNotifFreq }}}
 						<option value="{./name}" {{{ if ./selected }}}selected{{{ end }}}>
-							[[user:upvote-notif-freq.{./name}]]
+							{{tx(./label)}}
 						</option>
 						{{{end}}}
 					</select>
