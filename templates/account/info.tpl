@@ -145,13 +145,13 @@
 								<span class="timestamp timeago" title="{./timestampISO}"></span>
 							</div>
 							{{{ if (./type != "unban") }}}
-							<span class="badge text-bg-danger">[[user:banned]]</span>
+							<span class="badge text-bg-danger">{{tx("user:banned")}}</span>
 							{{{ else }}}
-							<span class="badge text-bg-success">[[user:unbanned]]</span>
+							<span class="badge text-bg-success">{{tx("user:unbanned")}}</span>
 							{{{ end }}}
 						</div>
 						<p class="mb-1">
-							<span class="reason">[[user:info.banned-reason-label]]: <strong>{{tx(./reason)}}</strong></span>
+							<span class="reason">{{tx("user:info.banned-reason-label")}}: <strong>{{tx(./reason)}}</strong></span>
 						</p>
 						<p>
 							{{{ if ./until }}}

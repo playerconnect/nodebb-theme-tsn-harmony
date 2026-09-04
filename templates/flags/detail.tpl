@@ -92,7 +92,7 @@
 					<ul class="list-unstyled">
 						{{{ each ./fields }}}
 						<li>
-							[[flags:{@key}]]{{{ if @value }}} &rarr; <span class="fw-semibold">{@value}</span>{{{ end }}}
+							{{tx("flags:{@key}")}}{{{ if @value }}} &rarr; <span class="fw-semibold">{@value}</span>{{{ end }}}
 						</li>
 						{{{ end }}}
 						{{{ each ./meta }}}

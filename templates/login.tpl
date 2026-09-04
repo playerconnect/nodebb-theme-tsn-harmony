@@ -18,9 +18,9 @@
 
 					<form class="d-flex flex-column gap-3" role="form" method="post" id="login-form">
 						<div class="mb-2 d-flex flex-column gap-2">
-							<label for="username">{{allowLoginWith}}</label>
+							<label for="username">{{tx(allowLoginWith)}}</label>
 							<div>
-								<input class="form-control" type="text" placeholder="{{allowLoginWith}}" name="username" id="username" autocorrect="off" autocapitalize="off" value="{{username}}"/>
+								<input class="form-control" type="text" placeholder="{{tx(allowLoginWith)}}" name="username" id="username" autocorrect="off" autocapitalize="off" value="{{tx(username)}}"/>
 							</div>
 						</div>
 						<div class="mb-2 d-flex flex-column gap-2">

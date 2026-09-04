@@ -1,7 +1,7 @@
 <div component="flags/filters" class="d-flex flex-wrap gap-2 pb-3 border-bottom">
 	<div class="btn-group bottom-sheet">
 		<a class="filter-btn btn btn-light btn-sm border {{{ if filters.quick }}}active-filter{{{ end }}} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-			<span class="filter-label">{{{ if filters.quick }}}[[flags:filter-quick-{./filters.quick}]]{{{ else }}}{{tx("flags:quick-filters")}}{{{ end }}}</span>
+			<span class="filter-label">{{{ if filters.quick }}}{{tx("flags:filter-quick-{./filters.quick}")}}{{{ else }}}{{tx("flags:quick-filters")}}{{{ end }}}</span>
 			<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu p-1 text-sm">
@@ -49,7 +49,7 @@
 
 	<div class="btn-group bottom-sheet">
 		<a class="filter-btn btn btn-light btn-sm border {{{ if (sort != "newest") }}}active-filter{{{ end }}} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-			<span class="filter-label">{{{ if (sort != "newest") }}}[[flags:sort-{./sort}]]{{{ else }}}{{tx("flags:sort")}}{{{ end }}}</span>
+			<span class="filter-label">{{{ if (sort != "newest") }}}{{tx("flags:sort-{./sort}")}}{{{ else }}}{{tx("flags:sort")}}{{{ end }}}</span>
 			<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu p-1 text-sm">
@@ -66,7 +66,7 @@
 
 	<div class="btn-group bottom-sheet">
 		<a class="filter-btn btn btn-light btn-sm border {{{ if filters.state }}}active-filter{{{ end }}} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-			<span class="filter-label">{{{ if filters.state }}}[[flags:state-{./filters.state}]]{{{ else }}}{{tx("flags:filter-state")}}{{{ end }}}</span>
+			<span class="filter-label">{{{ if filters.state }}}{{tx("flags:state-{./filters.state}")}}{{{ else }}}{{tx("flags:filter-state")}}{{{ end }}}</span>
 			<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu p-1 text-sm">
@@ -79,7 +79,7 @@
 
 	<div class="btn-group bottom-sheet">
 		<a class="filter-btn btn btn-light btn-sm border {{{ if filters.type }}}active-filter{{{ end }}} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-			<span class="filter-label">{{{ if filters.type }}}[[flags:filter-type-{./filters.type}]]{{{ else }}}{{tx("flags:filter-type")}}{{{ end }}}</span>
+			<span class="filter-label">{{{ if filters.type }}}{{tx("flags:filter-type-{./filters.type}")}}{{{ else }}}{{tx("flags:filter-type")}}{{{ end }}}</span>
 			<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu p-1 text-sm">

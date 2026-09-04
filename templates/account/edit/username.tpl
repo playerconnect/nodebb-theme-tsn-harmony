@@ -1,6 +1,6 @@
 <!-- IMPORT partials/account/header.tpl -->
 
-<h3 class="fw-semibold fs-5">{{{ if isSelf }}}{{tx("user:change-username")}}{{{ else }}}[[pages:{template.name}, {username}]]{{{ end }}}</h3>
+<h3 class="fw-semibold fs-5">{{{ if isSelf }}}{{tx("user:change-username")}}{{{ else }}}{{tx("pages:{template.name}, {username}")}}{{{ end }}}</h3>
 
 <form class="form-horizontal edit-form">
 	<div class="mb-2">

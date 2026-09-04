@@ -1,6 +1,6 @@
 <!-- IMPORT partials/account/header.tpl -->
 
-<h3 class="fw-semibold fs-5">{{{ if isSelf }}}{{tx("user:change-password")}}{{{ else }}}[[pages:{template.name}, {username}]]{{{ end }}}</h3>
+<h3 class="fw-semibold fs-5">{{{ if isSelf }}}{{tx("user:change-password")}}{{{ else }}}{{tx("pages:{template.name}, {username}")}}{{{ end }}}</h3>
 
 <form class="edit-form">
 	<!-- disables autocomplete on FF --><input type="password" style="display:none">

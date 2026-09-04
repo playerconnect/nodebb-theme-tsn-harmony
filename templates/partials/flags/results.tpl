@@ -26,7 +26,7 @@
 				{./heat}
 			</td>
 			<td><span class="timeago" title="{./datetimeISO}"></span></td>
-			<td><span class="badge bg-{./labelClass}">[[flags:state-{./state}]]</span></td>
+			<td><span class="badge bg-{./labelClass}">{{tx("flags:state-{./state}")}}</span></td>
 			<td>
 				<input type="checkbox" autocomplete="off" />
 			</td>
